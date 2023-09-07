@@ -14,7 +14,7 @@ in
     jade.system.interactive = {
       enable = mkOption {
         type = types.bool;
-        default = config.jade.system.enable;
+        default = false;
         description = "Indicates this system is interactive, which means I often need interactive shell access";
       };
       user = {
@@ -35,7 +35,7 @@ in
       };
     };
   };
-  config = mkIf cfg.enable {
+  config = mkIf (cfg_top.enable && cfg.enable) {
     # A user for me with login
     users.users."${cfg.user.name}" = {
       description = cfg.user.description;
