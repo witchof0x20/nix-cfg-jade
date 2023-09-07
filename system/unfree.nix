@@ -1,5 +1,8 @@
 { config, lib, ... }:
 with lib;
+let
+  cfg = config.jade.system.unfree;
+in
 {
   options = {
     # Unfree packages
@@ -14,13 +17,9 @@ with lib;
       };
     };
   };
-  config =
-    let
-      cfg = config.jade.system.unfree;
-    in
-    {
-      # Permitted proprietary packages
-      # TODO: figure out how to route this into a module
-      nixpkgs.config.allowUnfreePredicate = lib.mkIf cfg.enable (pkg: builtins.elem (lib.getName pkg) cfg.packageNames);
-    };
+  config = mkIf cfg.enable {
+    # Permitted proprietary packages
+    # TODO: figure out how to route this into a module
+    nixpkgs.config.allowUnfreePredicate = (pkg: builtins.elem (lib.getName pkg) cfg.packageNames);
+  };
 }

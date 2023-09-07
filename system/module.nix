@@ -13,10 +13,6 @@ in
       default = null;
       description = "Revision of the flake calling this flake. Used to store the system's revision";
     };
-    # Various services which can be turned on and off
-    services = {
-      # Options related to dhcp
-    };
   };
   imports = [
     # Unfree package config
@@ -35,6 +31,7 @@ in
   config = mkIf cfg.enable {
     # Let 'nixos-version --json' know about the Git revision of this flake.
     system.configurationRevision = cfg.rev;
+    # Set up our nix preferences
     nix = {
       # Use flakes
       package = pkgs.nixFlakes;
@@ -67,14 +64,6 @@ in
     # Internationalisation properties.
     i18n = {
       defaultLocale = "en_US.UTF-8";
-      extraLocaleSettings = {
-        LC_TIME = "en_GB.UTF-8";
-      };
-    };
-    # Console settings
-    console = {
-      font = "Lat2-Terminus16";
-      keyMap = "us";
     };
     # We always want to use immutable users
     users.mutableUsers = false;

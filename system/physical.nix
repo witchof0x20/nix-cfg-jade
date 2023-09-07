@@ -1,10 +1,13 @@
 # Common config for all physical (non-vm) machines
 { config, lib, ... }:
 with lib;
+let
+  cfg = config.jade.system.physical;
+in
 {
   options = {
-    # Whether the machine is physical
     jade.system.physical = {
+      # Whether the machine is physical
       enable = mkOption {
         type = types.bool;
         default = config.jade.system.enable;
@@ -17,17 +20,13 @@ with lib;
       };
     };
   };
-  config =
-    let
-      cfg = config.jade.system.physical;
-    in
-    {
-      # Enable the acpi daemon
-      services.acpid.enable = cfg.enable;
-      # Set to update microcode based on cpu
-      hardware.cpu = {
-        intel.updateMicrocode = (cfg.processor == "intel");
-        amd.updateMicrocode = (cfg.processor == "amd");
-      };
+  config = mkIf cfg.enable {
+    # Enable the acpi daemon
+    services.acpid.enable = cfg.enable;
+    # Set to update microcode based on cpu
+    hardware.cpu = {
+      intel.updateMicrocode = (cfg.processor == "intel");
+      amd.updateMicrocode = (cfg.processor == "amd");
     };
+  };
 }
