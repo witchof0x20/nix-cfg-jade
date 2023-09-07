@@ -1,7 +1,7 @@
 { config, lib, ... }:
 with lib;
 let
-  cfg_top = cfg.jade.system;
+  cfg_top = config.jade.system;
   cfg = cfg_top.services.ssh;
 in
 {
