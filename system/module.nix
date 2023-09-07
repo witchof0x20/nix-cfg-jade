@@ -17,7 +17,7 @@ in
     physical = {
       enable = mkOption {
         type = types.bool;
-        default = true;
+        default = config.jade.system.enable;
         description = "Indicates this system is physical (i.e. not a VM)";
       };
       # Whether the machine is Intel or AMD
@@ -41,7 +41,7 @@ in
     interactive = {
       enable = mkOption {
         type = types.bool;
-        default = true;
+        default = config.jade.system.enable;
         description = "Indicates this system is interactive, which means I often need interactive shell access";
       };
       user = {
@@ -85,32 +85,23 @@ in
       };
     };
   };
+  imports = [
+    # Generic options that must always be included
+    ./configuration.nix
+    # Unfree package config
+    ./unfree.nix
+    # Physical machine config
+    ./physical.nix
+    # Interactive machine config
+    ./interactive.nix
+    # Graphical machine config
+    ./graphical/configuration.nix
+    # DHCP options
+    ./services/dhcp.nix
+    # SSH options
+    ./services/ssh.nix
+  ];
   config = mkIf cfg.enable {
-    # Always import these no matter what
-    imports = [
-      # Generic options that must always be included
-      ./configuration.nix
-      # DHCP options
-      ./services/dhcp.nix
-      # SSH options
-      ./services/ssh.nix
-    ]
-    # Options for physical machines
-    ++ optionals cfg.unfree.enable [
-      ./unfree.nix
-    ]
-    # Options for physical machines
-    ++ optionals cfg.physical.enable [
-      ./physical.nix
-    ]
-    # Options for interactive machines
-    ++ optionals cfg.interactive.enable [
-      ./interactive.nix
-    ]
-    # Options for graphical machines
-    ++ optionals cfg.graphical.enable [
-      ./graphical/configuration.nix
-    ];
     # Let 'nixos-version --json' know about the Git revision of this flake.
     system.configurationRevision = cfg.rev;
     # Pin nixpkgs to the system nixpkgs

@@ -1,5 +1,9 @@
 # This machine is a desktop or laptop. Something with a graphical environment
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
+let
+  cfg = config.jade.system.graphical;
+in
+lib.mkIf cfg.enable
 {
   imports = [
     # Import pipewire config

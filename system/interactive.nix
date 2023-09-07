@@ -6,7 +6,7 @@ let
   cfg = config.jade.system.interactive;
   is_physical = config.jade.system.physical.enable;
 in
-{
+lib.mkIf cfg.enable {
   # A user for me with login
   users.users."${cfg.user.name}" = {
     description = cfg.user.description;
