@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, options, ... }:
 with lib;
 let
   cfg = config.jade.system.services.dhcp;

@@ -1,5 +1,5 @@
 # Source for this: https://cmm.github.io/soapbox/the-year-of-linux-on-the-desktop.html
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, options, ... }:
 with lib;
 let
   cfg = config.jade.system.graphical;

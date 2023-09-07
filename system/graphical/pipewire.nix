@@ -1,5 +1,5 @@
 # Source: https://cmm.github.io/soapbox/the-year-of-linux-on-the-desktop.html#responsiveness-tweaks-also-help-audio
-{ config, lib, ... }:
+{ config, lib, options, ... }:
 with lib;
 let
   cfg = config.jade.system.graphical;

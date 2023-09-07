@@ -1,7 +1,7 @@
 # Interactive systems are systems I log into and do stuff on
 # Usually means i'll need frequent shell access
 # password function is a function that takes `config` and returns a path to a password file
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, options, ... }:
 with lib;
 let
   cfg_top = config.jade.system;

@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, options, ... }:
 with lib;
 let
   cfg_top = config.jade.system;

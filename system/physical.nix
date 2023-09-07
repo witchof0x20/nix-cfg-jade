@@ -1,5 +1,5 @@
 # Common config for all physical (non-vm) machines
-{ config, lib, ... }:
+{ config, lib, options, ... }:
 with lib;
 let
   cfg = config.jade.system.physical;
