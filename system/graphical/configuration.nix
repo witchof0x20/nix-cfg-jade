@@ -1,5 +1,5 @@
 # This machine is a desktop or laptop. Something with a graphical environment
-{ config, pkgs, lib, options,... }:
+{ config, pkgs, lib, options, ... }:
 with lib;
 let
   cfg = config.jade.system.graphical;
