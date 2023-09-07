@@ -18,16 +18,16 @@ in
     # SSH options
     ./services/ssh.nix
   ];
-  options.jade.system = {
-    freeformType = with lib.types; attrsOf str;
-
-    # Main enabling option
-    enable = mkEnableOption "a default set of configurations used on all Jade's systems";
-    # Revision
-    rev = mkOption {
-      type = types.nullOr types.str;
-      default = null;
-      description = "Revision of the flake calling this flake. Used to store the system's revision";
+  options = {
+    jade.system = {
+      # Main enabling option
+      enable = mkEnableOption "a default set of configurations used on all Jade's systems";
+      # Revision
+      rev = mkOption {
+        type = types.nullOr types.str;
+        default = null;
+        description = "Revision of the flake calling this flake. Used to store the system's revision";
+      };
     };
   };
   config = mkIf cfg.enable {
