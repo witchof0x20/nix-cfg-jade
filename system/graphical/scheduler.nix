@@ -1,5 +1,5 @@
 # Source for this: https://cmm.github.io/soapbox/the-year-of-linux-on-the-desktop.html
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 with lib;
 let
   cfg = config.jade.system.graphical;
@@ -16,21 +16,6 @@ in
       "vm.watermark_boost_factor" = 0;
     };
 
-    # tell Systemd to measure things (probably the default these days?
-    # doesn't hurt, anyway):
-    systemd =
-      let
-        accounting = ''
-          DefaultCPUAccounting=yes
-          DefaultMemoryAccounting=yes
-          DefaultIOAccounting=yes
-        '';
-      in
-      {
-        extraConfig = accounting;
-        user.extraConfig = accounting;
-        services."user@".serviceConfig.Delegate = true;
-      };
     # use the handy system76-scheduler service (it is not in fact specific
     # to System76 hardware, despite the name)
     services.system76-scheduler = {
