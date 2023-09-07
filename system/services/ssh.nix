@@ -21,14 +21,14 @@ in
       # Never allow root auth
       permitRootLogin = "no";
       # Set up ssh to listen only on localhost if not enabled
-      listenAddresses = lib.optionals (!cfg.enabled) [
+      listenAddresses = lib.optionals (!cfg.enable) [
         {
           addr = "127.0.0.1";
           port = 22;
         }
       ];
       # Don't open firewall if not enabled
-      openFirewall = !cfg.enabled;
+      openFirewall = !cfg.enable;
       # TODO: put cipher options here
     };
   };
