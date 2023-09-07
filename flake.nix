@@ -10,6 +10,6 @@
     # This module is used for NixOS system config
     nixosModules.system = import ./system/module.nix;
     # This module is used for home-manager config
-    homeModule = { config, lib, pkgs, ... }: { };
+    # homeModule = { config, lib, pkgs, ... }: { };
   };
 }
