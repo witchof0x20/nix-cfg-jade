@@ -6,14 +6,17 @@ in
 {
   options = {
     # Unfree packages
-    jade.system.unfree = {
-      # Whether to allow unfree packages
-      enable = mkEnableOption "unfree packages";
-      # The specific unfree packages to allow
-      packageNames = mkOption {
-        type = types.listOf types.str;
-        default = [ ];
-        description = "names of packages to allow";
+    jade.system.unfree = mkOption {
+      description = "Unfree package config";
+      type = types.submodule {
+        # Whether to allow unfree packages
+        enable = mkEnableOption "unfree packages";
+        # The specific unfree packages to allow
+        packageNames = mkOption {
+          type = types.listOf types.str;
+          default = [ ];
+          description = "names of packages to allow";
+        };
       };
     };
   };
