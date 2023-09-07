@@ -1,7 +1,11 @@
 # Source for this: https://cmm.github.io/soapbox/the-year-of-linux-on-the-desktop.html
 { config, pkgs, ... }:
+with lib;
+let
+  cfg = config.jade.system.graphical;
+in
 {
-  config = {
+  config = mkIf cfg.enable {
     # ZRAM swap 
     zramSwap.enable = true;
     # use values deemed by folk wisdom to be optimal with zstd zram swap

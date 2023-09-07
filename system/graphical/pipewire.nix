@@ -1,10 +1,12 @@
 # Source: https://cmm.github.io/soapbox/the-year-of-linux-on-the-desktop.html#responsiveness-tweaks-also-help-audio
-{ config, ... }:
+{ config, lib, ... }:
+with lib;
 let
+  cfg = config.jade.system.graphical;
   cfg_interactive = config.jade.system.interactive;
 in
 {
-  config = {
+  config = mkIf cfg.enable {
     # Disable built in alsa
     sound.enable = false;
     # Replace with pipewire

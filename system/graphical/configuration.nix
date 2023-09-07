@@ -15,7 +15,7 @@ in
       };
     };
   };
-  imports = optionals cfg.enable [
+  imports = [
     # Import pipewire config
     ./pipewire.nix
     # Import scheduler
