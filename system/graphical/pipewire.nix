@@ -1,7 +1,7 @@
 # Source: https://cmm.github.io/soapbox/the-year-of-linux-on-the-desktop.html#responsiveness-tweaks-also-help-audio
 { config, ... }:
 let
-  cfg_interactive = config.jade.interactive;
+  cfg_interactive = config.jade.system.interactive;
 in
 {
   # Disable built in alsa

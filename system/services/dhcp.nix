@@ -1,6 +1,6 @@
 { config, lib, ... }:
 let
-  cfg = config.jade.dhcp;
+  cfg = config.jade.system.services.dhcp;
 in
 {
   # Disable extraneous DHCP options

@@ -3,8 +3,8 @@
 # password function is a function that takes `config` and returns a path to a password file
 { config, pkgs, lib, ... }:
 let
-  cfg = config.jade.interactive;
-  is_physical = config.jade.physical.enable;
+  cfg = config.jade.system.interactive;
+  is_physical = config.jade.system.physical.enable;
 in
 {
   # A user for me with login

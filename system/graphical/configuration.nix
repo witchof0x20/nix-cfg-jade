@@ -7,7 +7,7 @@
   ];
 
   # Desktop systems are always interactive
-  config.jade.interactive = true;
+  config.jade.system.interactive = true;
 
   # Enable X11 (just enough to run wayland and a backup xterm session just in case)
   services.xserver = {
