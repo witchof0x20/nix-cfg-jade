@@ -4,17 +4,7 @@ let
   cfg = config.jade.system;
 in
 {
-  options.jade.system = {
-    # Main enabling option
-    enable = mkEnableOption "a default set of configurations used on all Jade's systems";
-    # Revision
-    rev = mkOption {
-      type = types.nullOr types.str;
-      default = null;
-      description = "Revision of the flake calling this flake. Used to store the system's revision";
-    };
-  };
-  imports = [
+  imports = optionals cfg.enable [
     # Unfree package config
     ./unfree.nix
     # Physical machine config
@@ -28,6 +18,16 @@ in
     # SSH options
     ./services/ssh.nix
   ];
+  options.jade.system = {
+    # Main enabling option
+    enable = mkEnableOption "a default set of configurations used on all Jade's systems";
+    # Revision
+    rev = mkOption {
+      type = types.nullOr types.str;
+      default = null;
+      description = "Revision of the flake calling this flake. Used to store the system's revision";
+    };
+  };
   config = mkIf cfg.enable {
     # Let 'nixos-version --json' know about the Git revision of this flake.
     system.configurationRevision = cfg.rev;

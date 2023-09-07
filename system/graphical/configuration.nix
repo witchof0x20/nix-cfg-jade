@@ -15,14 +15,13 @@ in
       };
     };
   };
+  imports = optionals cfg.enable [
+    # Import pipewire config
+    ./pipewire.nix
+    # Import scheduler
+    ./scheduler.nix
+  ];
   config = mkIf cfg.enable {
-    imports = [
-      # Import pipewire config
-      ./pipewire.nix
-      # Import scheduler
-      ./scheduler.nix
-    ];
-
     # Desktop systems are always interactive
     jade.system.interactive = true;
 
