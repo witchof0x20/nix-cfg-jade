@@ -4,7 +4,7 @@ let
   cfg = config.jade.system;
 in
 {
-  imports = cfg.enable [
+  imports = [
     # Unfree package config
     ./unfree.nix
     # Physical machine config
