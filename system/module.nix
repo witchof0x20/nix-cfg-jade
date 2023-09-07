@@ -19,6 +19,8 @@ in
     ./services/ssh.nix
   ];
   options.jade.system = {
+
+    freeformType = with lib.types; attrsOf str;
     # Main enabling option
     enable = mkEnableOption "a default set of configurations used on all Jade's systems";
     # Revision
