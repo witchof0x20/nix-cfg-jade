@@ -47,10 +47,6 @@ in
       extraOptions = ''
         experimental-features = nix-command flakes
       '';
-      # Sandbox builds
-      useSandbox = true;
-      # Optimise store
-      autoOptimiseStore = true;
       # Auto-gc
       gc = {
         automatic = true;
@@ -65,11 +61,17 @@ in
       nixPath = [
         "nixpkgs=${cfg.nixpkgs}"
       ];
-      # Trust root and wheel
-      settings.trusted-users = pkgs.lib.mkAfter [ "root" "@wheel" ];
+      settings = {
+        # Sandbox builds
+        sandbox = true;
+        # Optimise store
+        auto-optimise-store = true;
+        # Trust root and wheel
+        trusted-users = pkgs.lib.mkAfter [ "root" "@wheel" ];
+      };
     };
     # Clean up /tmp on boot
-    boot.cleanTmpDir = true;
+    boot.tmp.cleanOnBoot = true;
     # Internationalisation properties.
     i18n = {
       defaultLocale = "en_US.UTF-8";
