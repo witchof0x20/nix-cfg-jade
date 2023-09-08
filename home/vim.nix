@@ -4,7 +4,9 @@ let
   cfg = config.jade.home.vim;
 in
 {
-  imports = [ ];
+  imports = [
+    ./ale_config.nix
+  ];
   options = {
     jade.home.vim = {
       enable = mkEnableOption "Vim";
