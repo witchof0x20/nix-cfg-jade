@@ -51,8 +51,6 @@ in
       uid = 1000;
       passwordFile = cfg.user.passwordFile;
     };
-    # Since this is a sudo user there's no shame in enabling trust
-    nix.trustedUsers = mkAfter [ cfg.user.name ];
     # Internationalisation properties.
     i18n = {
       defaultLocale = "en_US.UTF-8";
