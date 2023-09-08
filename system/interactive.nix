@@ -96,6 +96,7 @@ in
       # Downloading
       aria2
       curl
+      git
       wget
       # Extracting
       unzip

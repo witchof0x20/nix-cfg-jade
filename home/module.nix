@@ -8,19 +8,27 @@ in
     # TERMINAL PROGRAMS
     ## Vim
     ./programs/vim.nix
+    ## Tmux
+    ./programs/tmux.nix
     ## Password management
     ./programs/passwords.nix
     ## Cybersec tools
     ./programs/cybersecurity.nix
-    # DESKTOP PROGRAMS
-    ## .XResources
-    ./desktop/xresources.nix
-    ## EasyEffects
-    ./desktop/easyeffects.nix
-    ## Slack
-    ./desktop/slack.nix
+
     # DEVELOPMENT
     ./programs/development/module.nix
+
+    # DESKTOP SETUP
+    ## .XResources
+    ./desktop/xresources.nix
+    ## Theming
+    ./desktop/themes.nix
+    ## EasyEffects
+    ./desktop/easyeffects.nix
+
+    # DESKTOP PROGRAMS
+    ## Slack
+    ./desktop/slack.nix
   ];
   options = {
     jade.home = {

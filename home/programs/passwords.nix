@@ -22,5 +22,9 @@ in
         PASSWORD_STORE_CLIP_TIME = "15";
       };
     };
+    services.gpg-agent = {
+      enable = true;
+      pinentryFlavor = "gtk2";
+    };
   };
 }

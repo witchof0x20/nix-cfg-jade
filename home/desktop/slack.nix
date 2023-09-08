@@ -1,11 +1,11 @@
 { config, lib, pkgs, options, osConfig, ... }:
 with lib;
 let
-  cfg = config.jade.home.slack;
+  cfg = config.jade.home.programs.slack;
 in
 {
   options = {
-    jade.home.slack = {
+    jade.home.programs.slack = {
       enable = mkEnableOption "Slack";
     };
   };
