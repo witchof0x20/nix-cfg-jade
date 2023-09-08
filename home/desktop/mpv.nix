@@ -1,13 +1,13 @@
 { config, lib, pkgs, options, osConfig, ... }:
 with lib;
 let
-  cfg = config.jade.home.programs.programs.mpv;
+  cfg = config.jade.home.programs.mpv;
 in
 {
   imports = [ ];
   # TODO: gate this behind wayland
   options = {
-    jade.home.mpv = {
+    jade.home.programs.mpv = {
       enable = mkOption {
         type = types.bool;
         default = osConfig.jade.system.graphical.enable;
