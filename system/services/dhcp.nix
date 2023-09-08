@@ -5,11 +5,16 @@ let
 in
 {
   options = {
-    jade.system.services.dhcp = {
-      trust = mkOption {
-        type = types.bool;
-        default = false;
-        description = "Whether to trust the system's dhcp";
+    jade.system.services.dhcp = mkOption {
+      description = "Custom DHCP settings";
+      type = types.submodule {
+        options = {
+          trust = mkOption {
+            type = types.bool;
+            default = false;
+            description = "Whether to trust the system's dhcp";
+          };
+        };
       };
     };
   };

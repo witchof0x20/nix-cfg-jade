@@ -7,8 +7,13 @@ in
 {
   options = {
     # Whether to enable ssh
-    jade.system.services.ssh = {
-      enable = mkEnableOption "logging in via SSH";
+    jade.system.services.ssh = mkOption {
+      description = "Custom SSH settings";
+      type = types.submodule {
+        options = {
+          enable = mkEnableOption "logging in via SSH";
+        };
+      };
     };
   };
   config = mkIf cfg_top.enable {
