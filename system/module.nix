@@ -22,6 +22,8 @@ in
     ./services/dns.nix
     ##  SSH options
     ./services/ssh.nix
+    ## TOR options
+    ./services/tor-client.nix
   ];
   options = {
     jade.system = {
