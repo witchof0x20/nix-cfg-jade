@@ -22,9 +22,6 @@ in
     ./scheduler.nix
   ];
   config = mkIf cfg.enable {
-    # Desktop systems are always interactive
-    jade.system.interactive = true;
-
     # Enable X11 (just enough to run wayland and a backup xterm session just in case)
     services.xserver = {
       enable = true;
