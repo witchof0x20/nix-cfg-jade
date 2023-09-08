@@ -16,7 +16,7 @@ in
     };
   };
   config = mkIf cfg.enable {
-    programs.mako = {
+    services.mako = {
       enable = true;
       defaultTimeout = 5000;
     };
