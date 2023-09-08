@@ -23,6 +23,14 @@ in
               };
             };
           };
+          tcpcrypt = mkOption {
+            description = "TCPcrypt options";
+            type = types.submodule {
+              options = {
+                enable = mkEnableOption "tcpcrypt";
+              };
+            };
+          };
         };
       };
     };
@@ -32,6 +40,7 @@ in
     imports = optionals cfg.hardening.enable [
       "${registry.nixpkgs.flake}/nixos/modules/profiles/hardened.nix"
     ];
+    networking.tcpcrypt.enable = cfg.tcpcrypt.enable;
   } // (mkIf cfg.hardening.enable {
     # Override some stuff from hardened
     environment.memoryAllocator.provider = "libc";
