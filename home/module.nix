@@ -5,6 +5,8 @@ let
 in
 {
   imports = [
+    # Vim
+    ./vim.nix
     # .XResources
     ./xresources.nix
     # EasyEffects
