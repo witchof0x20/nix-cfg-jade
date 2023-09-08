@@ -10,6 +10,8 @@ in
     ./programs/vim.nix
     ## Tmux
     ./programs/tmux.nix
+    ## MPD
+    ./programs/mpd.nix
     ## Password management
     ./programs/passwords.nix
     ## Cybersec tools
@@ -53,7 +55,3 @@ in
     };
   };
 }
-
-
-
-

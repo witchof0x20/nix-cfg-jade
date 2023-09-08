@@ -26,5 +26,6 @@ in
       enable = true;
       pinentryFlavor = "gtk2";
     };
+    services.gnome-keyring.enable = true;
   };
 }

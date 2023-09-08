@@ -17,12 +17,16 @@ in
   config = mkIf cfg.enable {
     # Programs that are often useful
     home.packages = with pkgs; [
+      # Filesystem tools
+      sshfs
       # This machine will be used as a nix workstation
       nix-prefetch-git
       # Random file tools
       dos2unix
       unixtools.xxd
       nixpkgs-fmt
+      # Flashing tools
+      woeusb
     ];
     # Vim presets
     programs.vim.ale = {
