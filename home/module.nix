@@ -8,6 +8,10 @@ in
     # TERMINAL PROGRAMS
     ## Vim
     ./programs/vim.nix
+    ## Password management
+    ./programs/passwords.nix
+    ## Cybersec tools
+    ./programs/cybersecurity.nix
     # DESKTOP PROGRAMS
     ## .XResources
     ./desktop/xresources.nix
