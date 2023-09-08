@@ -1,12 +1,12 @@
 { config, lib, pkgs, options, osConfig, ... }:
 with lib;
 let
-  cfg = config.jade.home.alacritty;
+  cfg = config.jade.home.programs.alacritty;
 in
 {
   imports = [ ];
   options = {
-    jade.home.alacritty = {
+    jade.home.programs.alacritty = {
       enable = mkOption {
         type = types.bool;
         default = osConfig.jade.system.graphical.enable;

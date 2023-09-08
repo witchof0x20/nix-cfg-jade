@@ -1,7 +1,7 @@
 { config, lib, pkgs, options, osConfig, ... }:
 with lib;
 let
-  cfg = config.jade.home.mpv;
+  cfg = config.jade.home.programs.programs.mpv;
 in
 {
   imports = [ ];

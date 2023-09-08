@@ -1,12 +1,12 @@
 { config, lib, pkgs, options, osConfig, ... }:
 with lib;
 let
-  cfg = config.jade.home.firefox;
+  cfg = config.jade.home.programs.firefox;
 in
 {
   imports = [ ];
   options = {
-    jade.home.firefox = {
+    jade.home.programs.firefox = {
       enable = mkOption {
         type = types.bool;
         default = osConfig.jade.system.graphical.enable;

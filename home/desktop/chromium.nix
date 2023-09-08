@@ -1,12 +1,12 @@
 { config, lib, pkgs, options, osConfig, ... }:
 with lib;
 let
-  cfg = config.jade.home.chromium;
+  cfg = config.jade.home.programs.chromium;
 in
 {
   imports = [ ];
   options = {
-    jade.home.chromium = {
+    jade.home.programs.chromium = {
       enable = mkOption {
         type = types.bool;
         default = false;
