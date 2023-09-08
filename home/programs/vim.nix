@@ -40,12 +40,6 @@ in
           " Terminal titles
           set title
         '';
-        ale = {
-          enable = true;
-          fixOnSave = true;
-          autoComplete.enable = true;
-          fixers.nix = [ "nixpkgs-fmt" ];
-        };
       };
     # Add vim as default editor
     programs.bash.sessionVariables = {

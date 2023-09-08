@@ -15,6 +15,8 @@ in
     ./desktop/easyeffects.nix
     ## Slack
     ./desktop/slack.nix
+    # DEVELOPMENT
+    ./programs/development/module.nix
   ];
   options = {
     jade.home = {
