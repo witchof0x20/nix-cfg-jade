@@ -85,7 +85,7 @@ in
     users.mutableUsers = false;
     networking = {
       # By default, enable IPv6
-      enableIpv6 = true;
+      enableIPv6 = true;
       # Use temporary (privacy) addresses
       tempAddresses = "enabled";
       # Enable firewall with no ports by defualt
