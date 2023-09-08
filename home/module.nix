@@ -5,12 +5,16 @@ let
 in
 {
   imports = [
-    # Vim
-    ./vim.nix
-    # .XResources
-    ./xresources.nix
-    # EasyEffects
-    ./easyeffects.nix
+    # TERMINAL PROGRAMS
+    ## Vim
+    ./programs/vim.nix
+    # DESKTOP PROGRAMS
+    ## .XResources
+    ./desktop/xresources.nix
+    ## EasyEffects
+    ./desktop/easyeffects.nix
+    ## Slack
+    ./desktop/slack.nix
   ];
   options = {
     jade.home = {
@@ -23,10 +27,6 @@ in
     programs.bash = {
       enable = true;
       enableVteIntegration = true;
-      sessionVariables = {
-        # TODO: refer to the specific version of vim created by the vim config
-        EDITOR = "vim";
-      };
       shellAliases = {
         # Shortcut for xdg-open
         # TODO: move this together with xdg
