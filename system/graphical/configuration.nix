@@ -1,8 +1,9 @@
 # This machine is a desktop or laptop. Something with a graphical environment
-{ config, pkgs, lib, options, ... }:
+{ config, lib, options, pkgs, ... }:
 with lib;
 let
   cfg = config.jade.system.graphical;
+  cfg_phys = config.jade.system.physical;
 in
 {
   options = {
@@ -91,5 +92,11 @@ in
     services.udev.packages = [ pkgs.libu2f-host ];
     services.yubikey-agent.enable = true;
 
+    # TODO: presumably some of these are suitable for other processors.
+    hardware.opengl.extraPackages = mkIf cfg_physical.enable (with pkgs; optionals (cfg_physical.processor == "intel") [
+      vaapiIntel
+      vaapiVdpau
+      libvdpau-va-gl
+    ]);
   };
 }

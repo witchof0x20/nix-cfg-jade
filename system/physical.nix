@@ -33,10 +33,5 @@ in
       intel.updateMicrocode = (cfg.processor == "intel");
       amd.updateMicrocode = (cfg.processor == "amd");
     };
-    hardware.opengl.extraPackages = with pkgs; optionals (cfg.processor == "intel") [
-      vaapiIntel
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
   };
 }
