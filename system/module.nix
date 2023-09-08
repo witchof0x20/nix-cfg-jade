@@ -7,6 +7,8 @@ in
   imports = [
     # Unfree package config
     ./unfree.nix
+    # Security config
+    ./security.nix
     # Physical machine config
     ./physical.nix
     # Interactive machine config
