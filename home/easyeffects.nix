@@ -19,7 +19,7 @@ in
     # Create an immutable preset
     xdg.configFile."easyeffects/output/flat.json" = {
       enable = true;
-      text = toJson {
+      text = builtins.toJson {
         output = {
           blocklist = [ ];
           plugin_order = [ ];
