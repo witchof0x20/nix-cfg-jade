@@ -24,6 +24,11 @@ in
     jade.system = {
       # Main enabling option
       enable = mkEnableOption "a default set of configurations used on all Jade's systems";
+      # Main nixpkgs flake
+      nixpkgs = mkOption {
+        type = types.flake;
+        description = "Main nixpkgs flake for the system";
+      };
       # Revision
       rev = mkOption {
         type = types.nullOr types.str;
@@ -56,9 +61,9 @@ in
         options = "--delete-older-than 7d";
       };
       # Pin nixpkgs to the system nixpkgs
-      registry.nixpkgs.flake = nixpkgs;
+      registry.nixpkgs.flake = cfg.nixpkgs;
       nixPath = [
-        "nixpkgs=${nixpkgs}"
+        "nixpkgs=${cfg.nixpkgs}"
       ];
       # Trust root and wheel
       settings.trusted-users = pkgs.lib.mkAfter [ "root" "@wheel" ];
