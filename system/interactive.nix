@@ -19,24 +19,24 @@ in
             type = types.bool;
             default = false;
             description = "Indicates this system is interactive, which means I often need interactive shell access";
-          };
-          user = mkOption {
-            description = "Configuration for the main user of the system";
-            type = types.submodule {
-              options = {
-                name = mkOption {
-                  type = types.passwdEntry types.str;
-                  description = "The name of the main user of this machine";
-                  default = "jade";
-                };
-                description = mkOption {
-                  type = types.passwdEntry types.str;
-                  description = "Friendly name for the user";
-                  default = "Jade Harley";
-                };
-                passwordFile = mkOption {
-                  type = types.str;
-                  description = "Password file";
+            user = mkOption {
+              description = "Configuration for the main user of the system";
+              type = types.submodule {
+                options = {
+                  name = mkOption {
+                    type = types.passwdEntry types.str;
+                    description = "The name of the main user of this machine";
+                    default = "jade";
+                  };
+                  description = mkOption {
+                    type = types.passwdEntry types.str;
+                    description = "Friendly name for the user";
+                    default = "Jade Harley";
+                  };
+                  passwordFile = mkOption {
+                    type = types.str;
+                    description = "Password file";
+                  };
                 };
               };
             };
