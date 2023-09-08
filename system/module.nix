@@ -15,9 +15,12 @@ in
     ./interactive.nix
     # Graphical machine config
     ./graphical/configuration.nix
-    # DHCP options
+    # Services
+    ##  DHCP options
     ./services/dhcp.nix
-    # SSH options
+    ##  DNS options
+    ./services/dns.nix
+    ##  SSH options
     ./services/ssh.nix
   ];
   options = {
