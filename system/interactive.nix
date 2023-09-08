@@ -97,6 +97,12 @@ in
       aria2
       curl
       wget
+      # Extracting
+      unzip
+      zip
+      p7zip
+      # Basic web browsing (just in case)
+      w3m
       # Dns lookups
       dnsutils
     ] ++ optionals is_physical [
