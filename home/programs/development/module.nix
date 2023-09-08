@@ -7,6 +7,7 @@ in
 {
   imports = [
     ./git.nix
+    ./ssh.nix
   ];
   options = {
     jade.home.development = {
