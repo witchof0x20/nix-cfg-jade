@@ -1,5 +1,5 @@
 # Common config for all physical (non-vm) machines
-{ config, lib, options, ... }:
+{ config, lib, options, pkgs, ... }:
 with lib;
 let
   cfg = config.jade.system.physical;
@@ -33,5 +33,10 @@ in
       intel.updateMicrocode = (cfg.processor == "intel");
       amd.updateMicrocode = (cfg.processor == "amd");
     };
+    hardware.opengl.extraPackages = with pkgs; optionals (cfg.processor == "intel") [
+      vaapiIntel
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
   };
 }
