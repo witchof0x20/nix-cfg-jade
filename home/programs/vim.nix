@@ -43,7 +43,7 @@ in
       };
     # Add vim as default editor
     programs.bash.sessionVariables = {
-      EDITOR = "${config.home.programs.vim.package}/bin/vim";
+      EDITOR = "${config.programs.vim.package}/bin/vim";
     };
   };
 }
