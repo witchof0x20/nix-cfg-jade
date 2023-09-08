@@ -26,7 +26,7 @@ in
       enable = mkEnableOption "a default set of configurations used on all Jade's systems";
       # Main nixpkgs flake
       nixpkgs = mkOption {
-        type = types.flake;
+        type = types.attrs;
         description = "Main nixpkgs flake for the system";
       };
       # Revision
