@@ -15,7 +15,14 @@ in
             default = false;
             description = "Whether to blacklist the Intel ME kernel driverss";
           };
-          hardening.enable = mkEnableOption "the NixOS hardening preset";
+          hardening = mkOption {
+            description = "Hardening options";
+            type = types.submodule {
+              options = {
+                enable = mkEnableOption "the NixOS hardening preset";
+              };
+            };
+          };
         };
       };
     };
