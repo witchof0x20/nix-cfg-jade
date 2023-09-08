@@ -20,7 +20,7 @@ in
         nix-prefetch-git
         # Random file tools
         dos2unix
-        unixtols.xxd
+        unixtools.xxd
       ]);
     # Vim presets
     programs.vim.ale = {
