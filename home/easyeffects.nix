@@ -1,4 +1,4 @@
-{ config, lib, pkgs, options, ... }:
+{ config, lib, pkgs, options, osConfig, ... }:
 with lib;
 let
   cfg = config.jade.home.easyeffects;
@@ -7,7 +7,11 @@ in
   imports = [ ];
   options = {
     jade.home.easyeffects = {
-      enable = mkEnableOption "EasyEffects";
+      enable = mkOption {
+        type = types.bool;
+        default = osConfig.jade.system.graphical.enable;
+        description = "Whether to enable EasyEffects";
+      };
     };
   };
   config = mkIf cfg.enable {

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, options, ... }:
+{ config, lib, pkgs, options, osConfig, ... }:
 with lib;
 let
   cfg = config.jade.home.xresources;
@@ -8,7 +8,11 @@ in
   options = {
     jade.home.xresources = {
       # Enables Xresources management
-      enable = mkEnableOption "a default set of configurations used for Jade's home-manager setup";
+      enable = mkOption {
+        type = types.bool;
+        default = osConfig.jade.system.graphical.enable;
+        description = "Whether to manage .XResources";
+      };
       # DPI 
       dpi = mkOption {
         type = types.int;
