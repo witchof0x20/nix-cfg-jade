@@ -1,4 +1,4 @@
-{ config, lib, pkgs, options, ... }:
+{ config, lib, pkgs, options, osConfig, ... }:
 with lib;
 let
   cfg = config.jade.home.vim;
@@ -9,7 +9,11 @@ in
   ];
   options = {
     jade.home.vim = {
-      enable = mkEnableOption "Vim";
+      enable = mkOption {
+        type = types.bool;
+        default = osConfig.jade.system.interactive.enable;
+        description = "Whether to enable fancy vim config for the home user";
+      };
     };
   };
   config = mkIf cfg.enable {
