@@ -14,6 +14,7 @@ in
       slack = pkgs.slack;
     in
     mkIf cfg.enable {
+      # TODO assert that system wide chromium sandbox is avaiable
       systemd.user.services.slack = {
         Unit = {
           Description = "Desktop client for Slack";

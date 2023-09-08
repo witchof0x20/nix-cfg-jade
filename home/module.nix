@@ -21,15 +21,16 @@ in
     ./programs/development/module.nix
 
     # DESKTOP SETUP
-    ## .XResources
-    ./desktop/xresources.nix
-    ## Theming
-    ./desktop/themes.nix
-    ## EasyEffects
     ./desktop/easyeffects.nix
+    ./desktop/mako.nix
+    ./desktop/themes.nix
+    ./desktop/xresources.nix
 
     # DESKTOP PROGRAMS
-    ## Slack
+    ./desktop/alacritty.nix
+    ./desktop/chromium.nix
+    ./desktop/firefox.nix
+    ./desktop/mpv.nix
     ./desktop/slack.nix
   ];
   options = {
