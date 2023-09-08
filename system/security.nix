@@ -15,11 +15,21 @@ in
             default = false;
             description = "Whether to blacklist the Intel ME kernel driverss";
           };
+          hardening.enable = mkEnableOption "the NixOS hardening preset";
         };
       };
     };
   };
   config = {
     boot.blacklistedKernelModules = lib.optionals cfg.blacklist_me [ "mei" "mei_me" ];
-  };
+    imports = optionals cfg.hardening.enable [
+      "${registry.nixpkgs.flake}/nixos/modules/profiles/hardened.nix"
+    ];
+  } // (mkIf cfg.hardening.enable {
+    # Override some stuff from hardened
+    environment.memoryAllocator.provider = "libc";
+    # It's just too annoying to have to reboot on a laptop
+    # TODO: put a laptop flag
+    security.lockKernelModules = false;
+  });
 }
