@@ -35,7 +35,6 @@ in
       lfs.enable = true;
       userEmail = cfg.user.email;
       userName = cfg.user.name;
-      ignores = [ "*~" "*.swp" ];
     };
   };
 }

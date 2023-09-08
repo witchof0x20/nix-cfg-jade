@@ -45,5 +45,7 @@ in
     programs.bash.sessionVariables = {
       EDITOR = "${config.programs.vim.package}/bin/vim";
     };
+    # Ignore vim stuff in git
+    programs.git.ignores = [ "*~" "*.swp" ];
   };
 }
