@@ -40,7 +40,7 @@ in
   };
   config = mkIf cfg_top.enable {
     imports = optionals cfg.hardening.enable [
-      "${config.registry.nixpkgs.flake}/nixos/modules/profiles/hardened.nix"
+      "${builtins.toString config.nix.registry.nixpkgs.flake}/nixos/modules/profiles/hardened.nix"
     ];
     boot.blacklistedKernelModules = mkAfter (optionals (cfg.blacklist_me.enable) [ "mei" "mei_me" ]);
     networking.tcpcrypt.enable = cfg.tcpcrypt.enable;
