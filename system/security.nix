@@ -6,26 +6,29 @@ let
 in
 {
   options = {
-    jade.system.security = {
-      options = {
-        blacklist_me = mkOption {
-          type = types.bool;
-          default = false;
-          description = "Whether to blacklist the Intel ME kernel driverss";
-        };
-        hardening = mkOption {
-          description = "Hardening options";
-          type = types.submodule {
-            options = {
-              enable = mkEnableOption "the NixOS hardening preset";
+    jade.system.security = mkOption {
+      description = "Custom security options";
+      type = types.submodule {
+        options = {
+          blacklist_me = mkOption {
+            type = types.bool;
+            default = false;
+            description = "Whether to blacklist the Intel ME kernel driverss";
+          };
+          hardening = mkOption {
+            description = "Hardening options";
+            type = types.submodule {
+              options = {
+                enable = mkEnableOption "the NixOS hardening preset";
+              };
             };
           };
-        };
-        tcpcrypt = mkOption {
-          description = "TCPcrypt options";
-          type = types.submodule {
-            options = {
-              enable = mkEnableOption "tcpcrypt";
+          tcpcrypt = mkOption {
+            description = "TCPcrypt options";
+            type = types.submodule {
+              options = {
+                enable = mkEnableOption "tcpcrypt";
+              };
             };
           };
         };
