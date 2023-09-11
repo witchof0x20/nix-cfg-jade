@@ -2,7 +2,8 @@
 { config, lib, options, ... }:
 with lib;
 let
-  cfg = config.jade.system.security;
+  cfg_top = config.jade.system;
+  cfg = cfg_top.security;
 in
 {
   options = {
@@ -37,10 +38,10 @@ in
       };
     };
   };
-  config = ({
-    imports = optionals cfg.hardening.enable [
-      "${registry.nixpkgs.flake}/nixos/modules/profiles/hardened.nix"
-    ];
+  config = mkIf cfg_top.enable ({
+    #imports = optionals cfg.hardening.enable [
+    #  "${registry.nixpkgs.flake}/nixos/modules/profiles/hardened.nix"
+    #];
     boot.blacklistedKernelModules = mkAfter (optionals (cfg.blacklist_me.enable) [ "mei" "mei_me" ]);
     networking.tcpcrypt.enable = cfg.tcpcrypt.enable;
   } // (mkIf cfg.hardening.enable {
