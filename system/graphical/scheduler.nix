@@ -29,8 +29,22 @@
           # "voluntary" supposedly conserves battery but may also allow some
           # audio skips, so consider changing to "full"
           processScheduler = {
-            # I believe this exists solely for the placebo effect, so disable:
-            foregroundBoost.enable = false;
+            foregroundBoost = {
+              # ORIG POST: I believe this exists solely for the placebo effect, so disable:
+              # enable = false;
+              enable = true;
+              # Define what is foreground
+              foreground = {
+                # TODO: extract this into a dual-system-home file
+                matchers = [
+                  "alacritty"
+                  "firefox"
+                  "slack"
+                  "thunderbird"
+                  "vim"
+                ];
+              };
+            };
           };
         };
         assignments = {
