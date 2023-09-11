@@ -39,9 +39,7 @@ in
     };
   };
   config = mkIf cfg_top.enable {
-    imports = optionals cfg.hardening.enable [
-      "${builtins.toString config.nix.registry.nixpkgs.flake}/nixos/modules/profiles/hardened.nix"
-    ];
+    # TODO: figure out how to optionally import the hardening module
     boot.blacklistedKernelModules = mkAfter (optionals (cfg.blacklist_me.enable) [ "mei" "mei_me" ]);
     networking.tcpcrypt.enable = cfg.tcpcrypt.enable;
     environment.memoryAllocator.provider = mkIf cfg.hardening.enable "libc";
