@@ -39,17 +39,14 @@ in
     };
   };
   config = mkIf cfg_top.enable {
-    #imports = optionals cfg.hardening.enable [
-    #  "${registry.nixpkgs.flake}/nixos/modules/profiles/hardened.nix"
-    #];
+    imports = optionals cfg.hardening.enable [
+      "${config.registry.nixpkgs.flake}/nixos/modules/profiles/hardened.nix"
+    ];
     boot.blacklistedKernelModules = mkAfter (optionals (cfg.blacklist_me.enable) [ "mei" "mei_me" ]);
     networking.tcpcrypt.enable = cfg.tcpcrypt.enable;
+    environment.memoryallocator.provider = mkIf cfg.hardening.enable "libc";
+    # It's just too annoying to have to reboot on a laptop
+    # TODO: put a laptop flag
+    security.lockKernelModules = mkIf cfg.hardening.enable false;
   };
-  #// (mkIf cfg.hardening.enable {
-  #  # Override some stuff from hardened
-  #  environment.memoryAllocator.provider = "libc";
-  #  # It's just too annoying to have to reboot on a laptop
-  #  # TODO: put a laptop flag
-  #  security.lockKernelModules = false;
-  #}));
 }
