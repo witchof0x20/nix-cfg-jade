@@ -41,7 +41,9 @@ in
   config = mkIf cfg_top.enable {
     # TODO: figure out how to optionally import the hardening module
     boot.blacklistedKernelModules = mkAfter (optionals (cfg.blacklist_me.enable) [ "mei" "mei_me" ]);
-    networking.tcpcrypt.enable = cfg.tcpcrypt.enable;
+    networking.tcpcrypt.enable = mkDefault cfg.tcpcrypt.enable;
+    users.users.tcpcryptd.group = mkIf cfg.tcpcrypt.enable "tcpcryptd";
+    users.groups.tcpcryptd = mkIf cfg.tcpcrypt.enable { };
     environment.memoryAllocator.provider = mkIf cfg.hardening.enable "libc";
     # It's just too annoying to have to reboot on a laptop
     # TODO: put a laptop flag
