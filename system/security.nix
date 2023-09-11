@@ -36,7 +36,7 @@ in
     };
   };
   config = {
-    boot.blacklistedKernelModules = lib.optionals cfg.blacklist_me [ "mei" "mei_me" ];
+    boot.blacklistedKernelModules = lib.optionals (cfg.blacklist_me) [ "mei" "mei_me" ];
     imports = optionals cfg.hardening.enable [
       "${registry.nixpkgs.flake}/nixos/modules/profiles/hardened.nix"
     ];
