@@ -11,9 +11,11 @@ in
       type = types.submodule {
         options = {
           blacklist_me = mkOption {
-            type = types.bool;
-            default = false;
-            description = "Whether to blacklist the Intel ME kernel driverss";
+            type = types.submodule {
+              options = {
+                enable = mkEnableOption "whether to blacklist intel ME";
+              };
+            };
           };
           hardening = mkOption {
             description = "Hardening options";
@@ -39,7 +41,7 @@ in
     imports = optionals cfg.hardening.enable [
       "${registry.nixpkgs.flake}/nixos/modules/profiles/hardened.nix"
     ];
-    boot.blacklistedKernelModules = mkAfter (optionals (cfg.blacklist_me) [ "mei" "mei_me" ]);
+    boot.blacklistedKernelModules = mkAfter (optionals (cfg.blacklist_me.enable) [ "mei" "mei_me" ]);
     networking.tcpcrypt.enable = cfg.tcpcrypt.enable;
   } // (mkIf cfg.hardening.enable {
     # Override some stuff from hardened
