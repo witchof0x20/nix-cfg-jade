@@ -35,11 +35,11 @@ in
       };
     };
   };
-  config = {
-    boot.blacklistedKernelModules = lib.optionals (cfg.blacklist_me) [ "mei" "mei_me" ];
+  config = ({
     imports = optionals cfg.hardening.enable [
       "${registry.nixpkgs.flake}/nixos/modules/profiles/hardened.nix"
     ];
+    boot.blacklistedKernelModules = mkAfter (optionals (cfg.blacklist_me) [ "mei" "mei_me" ]);
     networking.tcpcrypt.enable = cfg.tcpcrypt.enable;
   } // (mkIf cfg.hardening.enable {
     # Override some stuff from hardened
@@ -47,5 +47,5 @@ in
     # It's just too annoying to have to reboot on a laptop
     # TODO: put a laptop flag
     security.lockKernelModules = false;
-  });
+  }));
 }
