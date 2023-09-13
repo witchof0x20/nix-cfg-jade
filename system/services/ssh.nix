@@ -35,7 +35,7 @@ in
         }
       ];
       # Don't open firewall if not enabled
-      openFirewall = !cfg.enable;
+      openFirewall = cfg.enable;
       # TODO: put cipher options here
     };
     programs.ssh = {
