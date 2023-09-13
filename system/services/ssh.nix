@@ -25,7 +25,7 @@ in
         # Never allow password auth
         PasswordAuthentication = false;
         # Never allow root auth
-        PermitRootLogin = "no";
+        PermitRootLogin = mkDefault "no";
       };
       # Set up ssh to listen only on localhost if not enabled
       listenAddresses = lib.optionals (!cfg.enable) [
