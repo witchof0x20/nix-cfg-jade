@@ -31,8 +31,6 @@ in
         enable = true;
         wayland = true;
       };
-      displayManager.defaultSession = "sway";
-      desktopManager.xterm.enable = true;
       # Fix screen tearing under x11
       deviceSection = ''
         Option "TearFree" "true"
