@@ -9,7 +9,7 @@
     in
     mkIf cfg.enable {
       # Disable built in alsa
-      sound.enable = false;
+      sound.enable = mkDefault false;
       # Replace with pipewire
       services.pipewire = {
         enable = true;
