@@ -32,9 +32,9 @@ in
         wayland = mkDefault true;
       };
       # Fix screen tearing under x11
-      deviceSection = ''
-        Option "TearFree" "true"
-      '';
+      #deviceSection = ''
+      #  Option "TearFree" "true"
+      #'';
     };
 
     # Enable OpenGL
