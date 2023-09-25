@@ -49,9 +49,6 @@ in
     nix = {
       # Use flakes
       package = pkgs.nixFlakes;
-      extraOptions = ''
-        experimental-features = nix-command flakes
-      '';
       # Auto-gc
       gc = {
         automatic = true;
@@ -73,6 +70,10 @@ in
         auto-optimise-store = true;
         # Trust root and wheel
         trusted-users = pkgs.lib.mkAfter [ "root" "@wheel" ];
+        # Enable flakes and commands
+        experimental-features = [ "nix-command" "flakes" "auto-allocate-uids" ];
+        # Auto allocate UIDs
+        auto-allocate-uids = true;
       };
     };
     # Clean up /tmp on boot

@@ -29,7 +29,7 @@ in
       # Use gdm 
       displayManager.gdm = {
         enable = true;
-        wayland = true;
+        wayland = mkDefault true;
       };
       # Fix screen tearing under x11
       deviceSection = ''
