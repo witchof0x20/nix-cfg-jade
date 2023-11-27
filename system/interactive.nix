@@ -49,7 +49,7 @@ in
       extraGroups = [ "wheel" ];
       # TODO: consider making this an option or using null
       uid = 1000;
-      passwordFile = cfg.user.passwordFile;
+      hashedPasswordFile = cfg.user.passwordFile;
     };
     # Internationalisation properties.
     i18n = {
