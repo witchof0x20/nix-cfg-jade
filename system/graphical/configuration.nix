@@ -60,7 +60,7 @@ in
     fonts = {
       fontDir.enable = true;
       enableGhostscriptFonts = true;
-      enableDefaultFonts = true;
+      enableDefaultPackages = true;
       fontconfig = {
         enable = true;
         defaultFonts = {
@@ -70,7 +70,7 @@ in
           serif = [ "DejaVu Serif" ];
         };
       };
-      fonts = with pkgs; [
+      packages = with pkgs; [
         # Coding font 
         fira-code
         fira-code-symbols
