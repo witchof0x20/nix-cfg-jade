@@ -28,7 +28,7 @@ in
       enable = true;
       # Use gdm 
       displayManager.gdm = {
-        enable = true;
+        enable = mkDefault true;
         wayland = mkDefault true;
       };
       # Fix screen tearing under x11
