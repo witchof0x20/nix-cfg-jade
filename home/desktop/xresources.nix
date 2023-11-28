@@ -1,12 +1,12 @@
 { config, lib, pkgs, options, osConfig, ... }:
 with lib;
 let
-  cfg = config.jade.home.desktop.xresources;
+  cfg = config.jade.home.program.xresources;
 in
 {
   imports = [ ];
   options = {
-    jade.home.desktop.xresources = {
+    jade.home.program.xresources = {
       # Enables Xresources management
       enable = mkOption {
         type = types.bool;
