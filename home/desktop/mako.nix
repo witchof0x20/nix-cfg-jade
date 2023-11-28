@@ -1,13 +1,13 @@
 { config, lib, pkgs, options, osConfig, ... }:
 with lib;
 let
-  cfg = config.jade.home.program.mako;
+  cfg = config.jade.home.programs.mako;
 in
 {
   imports = [ ];
   # TODO: gate this behind wayland
   options = {
-    jade.home.program.mako = {
+    jade.home.programs.mako = {
       enable = mkOption {
         type = types.bool;
         default = false;
