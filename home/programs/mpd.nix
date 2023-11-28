@@ -34,5 +34,10 @@ in
       enable = true;
       mpdMusicDir = null;
     };
+    # TODO: gate this behind sway or wayland support
+    home.packages = [ pkgs.mpc_cli ];
+    wayland.windowManager.sway.config.keybindings = {
+      "XF86AudioPlay" = "exec ${pkgs.mpc_cli}/bin/mpc toggle";
+    };
   };
 }
