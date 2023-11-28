@@ -89,6 +89,7 @@ in
       ripgrep
       # Terminfo :pleading:
       alacritty.terminfo
+      kitty.terminfo
       # For watching net traffic
       tcpdump
       # Terminal multiplexer
