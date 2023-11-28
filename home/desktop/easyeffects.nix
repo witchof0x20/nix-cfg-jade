@@ -1,12 +1,12 @@
 { config, lib, pkgs, options, osConfig, ... }:
 with lib;
 let
-  cfg = config.jade.home.easyeffects;
+  cfg = config.jade.home.programs.easyeffects;
 in
 {
   imports = [ ];
   options = {
-    jade.home.easyeffects = {
+    jade.home.programs.easyeffects = {
       enable = mkOption {
         type = types.bool;
         default = osConfig.jade.system.graphical.enable;
