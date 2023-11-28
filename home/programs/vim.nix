@@ -1,14 +1,14 @@
 { config, lib, pkgs, options, osConfig, ... }:
 with lib;
 let
-  cfg = config.jade.home.vim;
+  cfg = config.jade.home.programs.vim;
 in
 {
   imports = [
     ./ale_config.nix
   ];
   options = {
-    jade.home.vim = {
+    jade.home.programs.vim = {
       enable = mkOption {
         type = types.bool;
         default = osConfig.jade.system.interactive.enable;
