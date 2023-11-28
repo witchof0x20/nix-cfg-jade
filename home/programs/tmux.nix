@@ -1,7 +1,7 @@
 { config, lib, pkgs, options, osConfig, ... }:
 with lib;
 let
-  cfg = config.jade.home.tmux;
+  cfg = config.jade.home.programs.tmux;
 in
 {
   options = {
