@@ -5,7 +5,7 @@ let
 in
 {
   options = {
-    jade.home.tmux = {
+    jade.home.programs.tmux = {
       enable = mkOption {
         type = types.bool;
         default = osConfig.jade.system.interactive.enable;
