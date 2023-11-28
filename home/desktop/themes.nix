@@ -20,7 +20,7 @@ in
       # gtk stuff
       gtk-engine-murrine
       gtk_engines
-      gsettings-program-schemas
+      gsettings-desktop-schemas
       lxappearance
     ];
     gtk = {
