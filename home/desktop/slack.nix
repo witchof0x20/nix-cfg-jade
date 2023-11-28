@@ -7,6 +7,12 @@ in
   options = {
     jade.home.programs.slack = {
       enable = mkEnableOption "Slack";
+      package = mkOption {
+        type = types.package;
+        default = pkgs.slack;
+        defaultText = literalExpression "pkgs.slack";
+        description = "Slack package to use";
+      };
     };
   };
   config =
@@ -23,14 +29,14 @@ in
         };
         Service = {
           Environment = "PATH=${config.home.profileDirectory}/bin";
-          ExecStart = "${slack}/bin/slack -u -s";
+          ExecStart = "${cfg.package}/bin/slack -u -s";
         };
         Install = {
           WantedBy = [ "graphical-session.target" ];
         };
       };
       home.packages = [
-        slack
+        cfg.package
       ];
     };
 }
