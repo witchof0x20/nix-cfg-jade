@@ -41,11 +41,15 @@ in
           convolver = {
             "input-gain" = 0.0;
             "ir-width" = 100;
-            "kernel-path" = "${autoeq}/share/autoeq/ath-m50x-velour-48000.wav";
+            "kernel-path" = "/home/.config/easyeffects/irs/ath-m50x-velour-48000.irs";
             "output-gain" = 0.0;
           };
         };
       };
+    };
+    xdg.configFile."easyeffects/irs/ath-m50x-velour-48000.irs" = {
+      enable = true;
+      source = "${autoeq}/share/autoeq/ath-m50x-velour-48000.wav";
     };
     home.packages = [ autoeq ];
   };
