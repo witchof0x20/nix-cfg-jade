@@ -6,7 +6,7 @@ stdenv.mkDerivation rec {
     owner = "jaakkopasanen";
     repo = "AutoEq";
     rev = "0fad4b2ce4b3ceb97f0086c3a0940b4c2473c1f3";
-    sha256 = "";
+    sha256 = "sha256-mKndkRgjwhj2RZ+cnjroqjiNZpPahK7G81H7Pvm6wAM=";
   };
 
   buildPhase = "";
