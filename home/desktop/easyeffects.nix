@@ -3,6 +3,7 @@ with lib;
 let
   cfg = config.jade.home.programs.easyeffects;
   autoeq = (pkgs.callPackage ../../packages/autoeq/default.nix { });
+  irs_relative_path = "easyeffects/irs/ath-m50x-velour-48000.irs";
 in
 {
   imports = [ ];
@@ -41,13 +42,13 @@ in
           convolver = {
             "input-gain" = 0.0;
             "ir-width" = 100;
-            "kernel-path" = "/home/.config/easyeffects/irs/ath-m50x-velour-48000.irs";
+            "kernel-path" = "/home/jade/.config/${irs_relative_path}";
             "output-gain" = 0.0;
           };
         };
       };
     };
-    xdg.configFile."easyeffects/irs/ath-m50x-velour-48000.irs" = {
+    xdg.configFile.${irs_relative_path} = {
       enable = true;
       source = "${autoeq}/share/autoeq/ath-m50x-velour-48000.wav";
     };
