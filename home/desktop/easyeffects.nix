@@ -2,7 +2,7 @@
 with lib;
 let
   cfg = config.jade.home.programs.easyeffects;
-  autoeq = (pkgs.callPackage ../../packages/autoeq/default.nix);
+  autoeq = (pkgs.callPackage ../../packages/autoeq/default.nix {});
 in
 {
   imports = [ ];
