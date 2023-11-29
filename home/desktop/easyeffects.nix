@@ -42,7 +42,7 @@ in
           convolver = {
             "input-gain" = 0.0;
             "ir-width" = 100;
-            "kernel-path" = "/home/jade/.config/${irs_relative_path}";
+            "kernel-path" = "${config.xdg.configHome}/${irs_relative_path}";
             "output-gain" = 0.0;
           };
         };
