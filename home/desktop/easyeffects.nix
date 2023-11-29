@@ -2,7 +2,7 @@
 with lib;
 let
   cfg = config.jade.home.programs.easyeffects;
-  autoeq = (pkgs.callPackage ../../packages/autoeq/default.nix {});
+  autoeq = (pkgs.callPackage ../../packages/autoeq/default.nix { });
 in
 {
   imports = [ ];
@@ -21,17 +21,32 @@ in
       enable = true;
       preset = "flat";
     };
-    # Create an immutable preset
+    # Create an immutable preset that does nothing
     xdg.configFile."easyeffects/output/flat.json" = {
       enable = true;
       text = builtins.toJSON {
         output = {
           blocklist = [ ];
-          plugin_order = [ ];
+          plugins_order = [ ];
         };
       };
     };
-    # Create another immutable preset
+    # Create another immutable preset for my ath-m50x
+    xdg.configFile."easyeffects/output/ATH-m50x.json" = {
+      enable = true;
+      text = builtins.toJSON {
+        output = {
+          blocklist = [ ];
+          plugins_order = [ "convolver" ];
+          convolver = {
+            "input-gain" = 0.0;
+            "ir-width" = 100;
+            "kernel-path" = "${autoeq}/share/autoeq/ath-m50x-velour-48000.wav";
+            "output-gain" = 0.0;
+          };
+        };
+      };
+    };
     home.packages = [ autoeq ];
   };
 }
