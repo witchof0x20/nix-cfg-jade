@@ -9,8 +9,5 @@
     nixosModules.system = import ./system/module.nix;
     # This module is used for home-manager config
     homeModules.default = import ./home/module.nix;
-    overlays.default = final: prev: {
-      autoeq = (prev.callPackage ./packages/autoeq/default.nix { });
-    };
   };
 }

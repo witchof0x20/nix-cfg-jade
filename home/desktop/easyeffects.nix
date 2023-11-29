@@ -2,6 +2,7 @@
 with lib;
 let
   cfg = config.jade.home.programs.easyeffects;
+  autoeq = (pkgs.callPackage ../../packages/autoeq/default.nix);
 in
 {
   imports = [ ];
@@ -30,5 +31,7 @@ in
         };
       };
     };
+    # Create another immutable preset
+    home.packages = [ autoeq ];
   };
 }
