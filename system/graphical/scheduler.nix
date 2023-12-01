@@ -39,6 +39,7 @@
                 matchers = [
                   "alacritty"
                   "firefox"
+                  "firefox-bin"
                   "kitty"
                   "slack"
                   "thunderbird"
