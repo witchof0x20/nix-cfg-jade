@@ -44,6 +44,18 @@
                   "slack"
                   "thunderbird"
                   "vim"
+                  # XIVLauncher
+                  "XIVLauncher.Core"
+                  # FFXIV
+                  "ffxiv_dx11.exe"
+                  # Exes and wineserver spawned by ffxiv
+                  "wineserver"
+                  "services.exe"
+                  "winedevice.exe"
+                  "plugplay.exe"
+                  "explorer.exe"
+                  "svchost.exe"
+                  "rpcss.exe"
                 ];
               };
             };

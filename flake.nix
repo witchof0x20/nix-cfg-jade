@@ -1,5 +1,4 @@
 {
-
   description = "Flake defining features I want on every system I use";
 
   inputs = { };
