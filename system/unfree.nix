@@ -28,16 +28,15 @@ in
       };
     };
   };
-  config = mkIf cfg.enable ({ pkgs, lib, inputs, ... }: {
-    # Permitted proprietary packages
-    # TODO: figure out how to route this into a module
-    nixpkgs.config.allowUnfreePredicate = (pkg: builtins.elem (lib.getName pkg) cfg.packageNames);
-    # Import each of the channels using the predicate
-    _module.args = {
-      channels = (mapAttrs (name: flake: import flake {
+  config = mkIf cfg.enable
+    ({ pkgs, lib, inputs, ... }: {
+      # Permitted proprietary packages
+      # TODO: figure out how to route this into a module
+      nixpkgs.config.allowUnfreePredicate = (pkg: builtins.elem (lib.getName pkg) cfg.packageNames);
+      # Import each of the channels using the predicate
+      _module.args.channels = (mapAttrs (name: flake: import flake {
         system = pkgs.system;
         config.allowUnfreePredicate = (pkg: builtins.elem (lib.getName pkg) cfg.channels.${name});
       })) inputs;
-    };
-  });
+    });
 }
