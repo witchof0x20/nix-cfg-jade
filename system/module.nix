@@ -1,4 +1,4 @@
-{ config, lib, pkgs, options, ... }:
+{ config, lib, pkgs, options, inputs, ... }:
 with lib;
 let
   cfg = config.jade.system;
@@ -58,11 +58,17 @@ in
         # in the default config that gets put on all machines
         options = "--delete-older-than 7d";
       };
-      # Pin nixpkgs to the system nixpkgs
-      registry.nixpkgs.flake = cfg.nixpkgs;
+      # Pin other channels
+      registry = ((mapAttrs (name: flake: {
+        inherit flake;
+      })) inputs) // {
+        nixpkgs.flake = cfg.nixpkgs;
+      };
+      # Handle nixPath
       nixPath = [
         "nixpkgs=${cfg.nixpkgs}"
-      ];
+      ] ++ (mapAttrsToList (name: flake: "${name}=${flake}") inputs);
+      # Nice nix settings
       settings = {
         # Sandbox builds
         sandbox = true;

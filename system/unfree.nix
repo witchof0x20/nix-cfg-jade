@@ -41,8 +41,5 @@ in
           };
         })))
         inputs);
-      nix.registry = ((mapAttrs (name: flake: {
-        inherit flake;
-      })) inputs);
     };
 }
