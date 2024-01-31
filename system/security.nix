@@ -16,6 +16,7 @@ in
               options = {
                 enable = mkEnableOption "whether to blacklist intel ME";
               };
+              default = { };
             };
           };
           hardening = mkOption {
