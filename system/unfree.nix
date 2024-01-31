@@ -18,13 +18,26 @@ in
             default = [ ];
             description = "names of packages to allow";
           };
+          # Unfree packages to allow for alternative channels
+          channels = mkOption {
+            type = types.attrsOf (types.listOf types.str);
+            default = { };
+            description = "names of packages to allow per-channel";
+          };
         };
       };
     };
   };
-  config = mkIf cfg.enable {
+  config = mkIf cfg.enable ({ pkgs, inputs, ... }: {
     # Permitted proprietary packages
     # TODO: figure out how to route this into a module
     nixpkgs.config.allowUnfreePredicate = (pkg: builtins.elem (lib.getName pkg) cfg.packageNames);
-  };
+    # Import each of the channels using the predicate
+    _module.args = {
+      channels = (lib.mapAttrs (name: flake: import flake {
+        system = pkgs.system;
+        config.allowUnfreePredicate = (pkg: builtins.elem (lib.getName pkg) cfg.channels.${name});
+      })) inputs;
+    };
+  });
 }
