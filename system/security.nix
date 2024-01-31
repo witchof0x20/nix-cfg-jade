@@ -26,24 +26,28 @@ in
               };
             };
           };
-          tcpcrypt = mkOption {
-            description = "TCPcrypt options";
-            type = types.submodule {
-              options = {
-                enable = mkEnableOption "tcpcrypt";
-              };
-            };
-          };
+          #          tcpcrypt = mkOption {
+          #            description = "TCPcrypt options";
+          #            type = types.submodule {
+          #              options = {
+          #                enable = mkEnableOption "tcpcrypt";
+          #              };
+          #            };
+          #          };
         };
       };
     };
   };
   config = mkIf cfg_top.enable {
-    # TODO: figure out how to optionally import the hardening module
+    # ME Blacklisting
     boot.blacklistedKernelModules = mkAfter (optionals (cfg.blacklist_me.enable) [ "mei" "mei_me" ]);
-    networking.tcpcrypt.enable = mkDefault cfg.tcpcrypt.enable;
-    users.users.tcpcryptd.group = mkIf cfg.tcpcrypt.enable "tcpcryptd";
-    users.groups.tcpcryptd = mkIf cfg.tcpcrypt.enable { };
+
+    # TCPCrypt
+    #networking.tcpcrypt.enable = mkDefault cfg.tcpcrypt.enable;
+    #users.users.tcpcryptd.group = mkIf cfg.tcpcrypt.enable "tcpcryptd";
+    #users.groups.tcpcryptd = mkIf cfg.tcpcrypt.enable { };
+
+    # TODO: figure out how to optionally import the hardening module
     environment.memoryAllocator.provider = mkIf cfg.hardening.enable "libc";
     # It's just too annoying to have to reboot on a laptop
     # TODO: put a laptop flag
