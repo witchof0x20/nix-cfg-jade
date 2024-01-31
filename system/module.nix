@@ -40,11 +40,18 @@ in
         default = null;
         description = "Revision of the flake calling this flake. Used to store the system's revision";
       };
+      # Nixpkgs flakes
+      inputs = mkOption {
+        type = types.attrsOf (types.flake);
+        description = "Nixpkgs flakes";
+      };
     };
   };
   config = mkIf cfg.enable {
     # Let 'nixos-version --json' know about the Git revision of this flake.
     system.configurationRevision = cfg.rev;
+    # Store our inputs
+    _module.args.inputs = cfg.inputs;
     # Set up our nix preferences
     nix = {
       # Use flakes
