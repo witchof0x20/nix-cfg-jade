@@ -36,7 +36,7 @@ in
       (name: (flake: (import flake {
         inherit (pkgs) system;
         config = {
-          allowUnfreePredicate = (pkg: builtins.elem (lib.getName pkg) cfg.channels.${name});
+          allowUnfreePredicate = (pkg: builtins.elem (lib.getName pkg) (cfg.channels.${name}));
         };
       })))
       inputs);
