@@ -21,7 +21,6 @@ in
           # Unfree packages to allow for alternative channels
           channels = mkOption {
             type = types.attrsOf (types.listOf types.str);
-            default = { };
             description = "names of packages to allow per-channel";
           };
         };
@@ -35,7 +34,7 @@ in
       nixpkgs.config.allowUnfreePredicate = (pkg: builtins.elem (lib.getName pkg) cfg.packageNames);
       # Import each of the channels using the predicate
       _module.args.channels = (mapAttrs (name: flake: (import flake {
-        system = pkgs.system;
+        inherit (pkgs) system;
         config = {
           allowUnfreePredicate = (pkg: builtins.elem (lib.getName pkg) cfg.channels.${name});
         };
