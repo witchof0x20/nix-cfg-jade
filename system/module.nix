@@ -42,7 +42,7 @@ in
       };
       # Nixpkgs flakes
       inputs = mkOption {
-        type = types.attrsOf (types.flake);
+        type = types.attrsOf (types.attrs);
         description = "Nixpkgs flakes";
       };
     };
