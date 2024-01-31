@@ -32,15 +32,13 @@ in
     # TODO: figure out how to route this into a module
     nixpkgs.config.allowUnfreePredicate = (pkg: builtins.elem (lib.getName pkg) cfg.packageNames);
     # Import each of the channels using the predicate
-    specialArgs = {
-      channels = (mapAttrs
-        (name: (flake: (import flake {
-          inherit (pkgs) system;
-          config = {
-            allowUnfreePredicate = (pkg: builtins.elem (lib.getName pkg) cfg.channels.${name});
-          };
-        })))
-        inputs);
-    };
+    _module.args.channels = (mapAttrs
+      (name: (flake: (import flake {
+        inherit (pkgs) system;
+        config = {
+          allowUnfreePredicate = (pkg: builtins.elem (lib.getName pkg) cfg.channels.${name});
+        };
+      })))
+      inputs);
   };
 }
