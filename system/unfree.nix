@@ -36,7 +36,9 @@ in
       # Import each of the channels using the predicate
       _module.args.channels = (mapAttrs (name: flake: (import flake {
         system = pkgs.system;
-        config.allowUnfreePredicate = (pkg: builtins.elem (lib.getName pkg) cfg.channels.${name});
+        config = {
+          allowUnfreePredicate = (pkg: builtins.elem (lib.getName pkg) cfg.channels.${name});
+        };
       }))) inputs;
     });
 }
