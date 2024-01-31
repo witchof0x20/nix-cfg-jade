@@ -40,6 +40,6 @@ in
             allowUnfreePredicate = (pkg: builtins.elem (lib.getName pkg) (cfg.channels.${name}));
           };
         })))
-        inputs);
+        config.jade.system.inputs);
     };
 }
