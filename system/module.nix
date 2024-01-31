@@ -1,4 +1,4 @@
-{ config, lib, pkgs, options, inputs, ... }:
+{ config, lib, pkgs, options, ... }:
 with lib;
 let
   cfg = config.jade.system;
@@ -47,67 +47,72 @@ in
       };
     };
   };
-  config = mkIf cfg.enable {
-    # Let 'nixos-version --json' know about the Git revision of this flake.
-    system.configurationRevision = cfg.rev;
-    # Store our inputs
-    _module.args.inputs = cfg.inputs;
-    # Set up our nix preferences
-    nix = {
-      # Use flakes
-      package = pkgs.nixFlakes;
-      # Auto-gc
-      gc = {
-        automatic = true;
-        persistent = true;
-        # We don't want to rule out all previous derivations because we might actually need to rollback
-        # So we're making our gc runs that delete generations conservative [;) get it?]
-        # in the default config that gets put on all machines
-        options = "--delete-older-than 7d";
+  config = mkIf cfg.enable (
+    let
+      inputs = cfg.inputs;
+    in
+    {
+      # Let 'nixos-version --json' know about the Git revision of this flake.
+      system.configurationRevision = cfg.rev;
+      # Store our inputs
+      _module.args.inputs = inputs;
+      # Set up our nix preferences
+      nix = {
+        # Use flakes
+        package = pkgs.nixFlakes;
+        # Auto-gc
+        gc = {
+          automatic = true;
+          persistent = true;
+          # We don't want to rule out all previous derivations because we might actually need to rollback
+          # So we're making our gc runs that delete generations conservative [;) get it?]
+          # in the default config that gets put on all machines
+          options = "--delete-older-than 7d";
+        };
+        # Pin other channels
+        registry = ((mapAttrs (name: flake: {
+          inherit flake;
+        })) inputs) // {
+          nixpkgs.flake = cfg.nixpkgs;
+        };
+        # Handle nixPath
+        nixPath = [
+          "nixpkgs=${cfg.nixpkgs}"
+        ] ++ (mapAttrsToList (name: flake: "${name}=${flake}") inputs);
+        # Nice nix settings
+        settings = {
+          # Sandbox builds
+          sandbox = true;
+          # Optimise store
+          auto-optimise-store = true;
+          # Trust root and wheel
+          trusted-users = pkgs.lib.mkAfter [ "root" "@wheel" ];
+          # Enable flakes and commands
+          experimental-features = [ "nix-command" "flakes" "auto-allocate-uids" ];
+          # Auto allocate UIDs
+          auto-allocate-uids = true;
+        };
       };
-      # Pin other channels
-      registry = ((mapAttrs (name: flake: {
-        inherit flake;
-      })) inputs) // {
-        nixpkgs.flake = cfg.nixpkgs;
+      # Clean up /tmp on boot
+      boot.tmp.cleanOnBoot = true;
+      # Internationalisation properties.
+      i18n = {
+        defaultLocale = "en_US.UTF-8";
       };
-      # Handle nixPath
-      nixPath = [
-        "nixpkgs=${cfg.nixpkgs}"
-      ] ++ (mapAttrsToList (name: flake: "${name}=${flake}") inputs);
-      # Nice nix settings
-      settings = {
-        # Sandbox builds
-        sandbox = true;
-        # Optimise store
-        auto-optimise-store = true;
-        # Trust root and wheel
-        trusted-users = pkgs.lib.mkAfter [ "root" "@wheel" ];
-        # Enable flakes and commands
-        experimental-features = [ "nix-command" "flakes" "auto-allocate-uids" ];
-        # Auto allocate UIDs
-        auto-allocate-uids = true;
+      # We always want to use immutable users
+      users.mutableUsers = false;
+      networking = {
+        # By default, enable IPv6
+        enableIPv6 = true;
+        # Use temporary (privacy) addresses
+        tempAddresses = "enabled";
+        # Enable firewall with no ports by defualt
+        firewall = {
+          enable = true;
+          allowedTCPPorts = [ ];
+          allowedUDPPorts = [ ];
+        };
       };
-    };
-    # Clean up /tmp on boot
-    boot.tmp.cleanOnBoot = true;
-    # Internationalisation properties.
-    i18n = {
-      defaultLocale = "en_US.UTF-8";
-    };
-    # We always want to use immutable users
-    users.mutableUsers = false;
-    networking = {
-      # By default, enable IPv6
-      enableIPv6 = true;
-      # Use temporary (privacy) addresses
-      tempAddresses = "enabled";
-      # Enable firewall with no ports by defualt
-      firewall = {
-        enable = true;
-        allowedTCPPorts = [ ];
-        allowedUDPPorts = [ ];
-      };
-    };
-  };
+    }
+  );
 }
