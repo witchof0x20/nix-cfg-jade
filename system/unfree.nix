@@ -1,4 +1,4 @@
-{ config, lib, options, inputs, ... }:
+{ config, pkgs, lib, options, inputs, ... }:
 with lib;
 let
   cfg = config.jade.system.unfree;
