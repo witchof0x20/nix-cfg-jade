@@ -24,7 +24,7 @@ in
     };
     services.gpg-agent = {
       enable = true;
-      pinentryPackage = with pkgs; [ pkgs.pinentry_gtk2 ];
+      pinentryPackage = pkgs.pinentry_gtk2;
     };
     services.gnome-keyring.enable = true;
   };
