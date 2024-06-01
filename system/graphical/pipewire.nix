@@ -40,16 +40,17 @@
         DEVPATH=="/devices/virtual/misc/hpet", OWNER="root", GROUP="audio", MODE="0660"
       '';
       # Tell pipewireto prioritize itself
-      environment.etc."pipewire/pipewire.conf.d/99-custom.conf".text = ''
+      services.pipewire.extraConfig.pipewire."99-custom.conf" = {
         context.modules = [
-          { name = libpipewire-module-rt
+          {
+            name = "libpipewire-module-rt";
             args = {
-              nice.level = -11
-              rt.prio = 19
-            }
+              nice.level = -11;
+              rt.prio = 19;
+            };
           }
-        ]
-      '';
+        ];
+      };
       # System76 scheduler-specific stuff
       services.system76-scheduler = {
         # Manual override
