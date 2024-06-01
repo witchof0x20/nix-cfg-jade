@@ -26,7 +26,6 @@ in
           };
           size = 8.0;
         };
-        dynamic_title = true;
         colors = {
           # Default colors
           primary = {
