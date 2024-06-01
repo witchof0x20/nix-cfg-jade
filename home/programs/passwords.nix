@@ -24,7 +24,7 @@ in
     };
     services.gpg-agent = {
       enable = true;
-      pinentryFlavor = "gtk2";
+      #pinentryFlavor = "gtk2";
     };
     services.gnome-keyring.enable = true;
   };
