@@ -28,7 +28,10 @@ in
           PartOf = [ "graphical-session.target" ];
         };
         Service = {
-          Environment = "PATH=${config.home.profileDirectory}/bin";
+          Environment = [
+            "PATH=${config.home.profileDirectory}/bin"
+            "NIXOS_OZONE_WL=1"
+          ];
           ExecStart = "${cfg.package}/bin/slack -u -s";
         };
         Install = {
