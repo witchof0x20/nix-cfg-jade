@@ -41,10 +41,10 @@ in
   };
   config = mkIf cfg.enable {
     # Add in packages
-    nixpkgs.overlays = [
+    nixpkgs.overlays = let system = config.nixpkgs.system; in [
       (self: super: {
-        autoeq = pkgs.callPackage packages.autoeq { };
-        ee-framework-presets = pkgs.callPackage packages.ee-framework-presets { };
+        autoeq = pkgs.callPackage packages.${system}.autoeq { };
+        ee-framework-presets = pkgs.callPackage packages.${system}.ee-framework-presets { };
       })
     ];
     # Shell config
