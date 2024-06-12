@@ -1,4 +1,4 @@
-packages: { config, lib, options, osConfig, pkgs, ... }:
+{ config, lib, options, osConfig, pkgs, ... }:
 with lib;
 let
   cfg = config.jade.home;
