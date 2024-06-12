@@ -2,7 +2,8 @@
 with lib;
 let
   cfg = config.jade.home.programs.easyeffects;
-  autoeq = (pkgs.callPackage ../../packages/autoeq/default.nix { });
+  autoeq = pkgs.autoeq;
+  ee-framework-presets = pkgs.ee-framework-presets;
   irs_relative_path = "easyeffects/irs/ath-m50x-velour-48000.irs";
 in
 {
@@ -52,6 +53,17 @@ in
       enable = true;
       source = "${autoeq}/share/autoeq/ath-m50x-velour-48000.wav";
     };
-    home.packages = [ autoeq ];
+    xdg.configFile."easyeffects/output/framework.json" = {
+      enable = true;
+      source = "${ee-framework-presets}/share/ee-framework-presets/lappy_mctopface.json";
+
+    };
+    home.packages = [ autoeq ee-framework-presets ];
   };
 }
+
+
+
+
+
+

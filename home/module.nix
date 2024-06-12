@@ -1,4 +1,4 @@
-{ config, lib, options, osConfig, pkgs, ... }:
+packages: { config, lib, options, osConfig, pkgs, ... }:
 with lib;
 let
   cfg = config.jade.home;
@@ -40,6 +40,13 @@ in
     };
   };
   config = mkIf cfg.enable {
+    # Add in packages
+    nixpkgs.overlays = [
+      (self: super: {
+        autoeq = pkgs.callPackage packages.autoeq { };
+        ee-framework-presets = pkgs.callPackage packages.ee-framework-presets { };
+      })
+    ];
     # Shell config
     programs.bash = {
       enable = true;

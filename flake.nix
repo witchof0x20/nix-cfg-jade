@@ -1,12 +1,35 @@
 {
   description = "Flake defining features I want on every system I use";
 
-  inputs = { };
+  inputs = {
+    # Simple systems import
+    systems.url = "github:nix-systems/x86_64-linux";
+    # Flake-utils for exporting packages
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
+    # Autoeq preset for headphones
+    autoeq = {
+      url = github:jaakkopasanen/AutoEq;
+      flake = false;
+    };
+    # Equalizer presets for framework laptops
+    ee-framework-presets = {
+      url = github:ceiphr/ee-framework-presets;
+      flake = false;
+    };
+  };
 
-  outputs = { self }: rec {
+  outputs = { self, flake-utils, autoeq, ee-framework-presets, ... }: (flake-utils.lib.eachDefaultSystem (system: rec {
     # This module is used for NixOS system config
     nixosModules.system = import ./system/module.nix;
     # This module is used for home-manager config
-    homeModules.default = import ./home/module.nix;
-  };
+    # Pass in our packages
+    homeModules.default = import ./home/module.nix packages;
+    packages = {
+      autoeq = import ./packages/autoeq/default.nix autoeq;
+      ee-framework-presets = import ./packages/ee-framework-presets/default.nix ee-framework-presets;
+    };
+  }));
 }

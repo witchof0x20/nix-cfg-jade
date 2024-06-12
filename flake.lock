@@ -1,6 +1,80 @@
 {
   "nodes": {
-    "root": {}
+    "autoeq": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1713701579,
+        "narHash": "sha256-IJLhtHIGt0pI8RIf9nsmHOAL/8VgGamwct5+Bpchq5E=",
+        "owner": "jaakkopasanen",
+        "repo": "AutoEq",
+        "rev": "706974a3fc2eb85e46f01be40f7dff8f7afdec39",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jaakkopasanen",
+        "repo": "AutoEq",
+        "type": "github"
+      }
+    },
+    "ee-framework-presets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1666496289,
+        "narHash": "sha256-z2WmozMDMUkiAd+BEc/5+DHgFXDbw3FdsvBwgIj0JmI=",
+        "owner": "ceiphr",
+        "repo": "ee-framework-presets",
+        "rev": "27885fe00c97da7c441358c7ece7846722fd12fa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ceiphr",
+        "repo": "ee-framework-presets",
+        "type": "github"
+      }
+    },
+    "flake-utils": {
+      "inputs": {
+        "systems": [
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1710146030,
+        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "autoeq": "autoeq",
+        "ee-framework-presets": "ee-framework-presets",
+        "flake-utils": "flake-utils",
+        "systems": "systems"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1680978846,
+        "narHash": "sha256-Gtqg8b/v49BFDpDetjclCYXm8mAnTrUzR0JnE2nv5aw=",
+        "owner": "nix-systems",
+        "repo": "x86_64-linux",
+        "rev": "2ecfcac5e15790ba6ce360ceccddb15ad16d08a8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "x86_64-linux",
+        "type": "github"
+      }
+    }
   },
   "root": "root",
   "version": 7

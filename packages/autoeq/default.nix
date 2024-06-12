@@ -1,14 +1,6 @@
-{ stdenv, fetchFromGitHub, ... }:
+src: { stdenv, fetchFromGitHub, ... }:
 stdenv.mkDerivation rec {
-  name = "AutoEq";
-  version = "git-2023-11-28";
-  src = fetchFromGitHub {
-    owner = "jaakkopasanen";
-    repo = "AutoEq";
-    rev = "0fad4b2ce4b3ceb97f0086c3a0940b4c2473c1f3";
-    sha256 = "sha256-mKndkRgjwhj2RZ+cnjroqjiNZpPahK7G81H7Pvm6wAM=";
-  };
-
+  inherit src;
   buildPhase = "";
   installPhase = ''
     mkdir -p $out/share/autoeq/
