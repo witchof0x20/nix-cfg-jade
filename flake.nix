@@ -21,12 +21,13 @@
     };
   };
 
-  outputs = { self, flake-utils, autoeq, ee-framework-presets, ... }: (flake-utils.lib.eachDefaultSystem (system: rec {
+  outputs = { self, flake-utils, autoeq, ee-framework-presets, ... }: {
     # This module is used for NixOS system config
     nixosModules.system = import ./system/module.nix;
     # This module is used for home-manager config
     # Pass in our packages
-    homeModules.default = import ./home/module.nix packages;
+    homeModules.default = import ./home/module.nix self.packages;
+  } // (flake-utils.lib.eachDefaultSystem (system: rec {
     packages = {
       autoeq = import ./packages/autoeq/default.nix autoeq;
       ee-framework-presets = import ./packages/ee-framework-presets/default.nix ee-framework-presets;
