@@ -1,5 +1,6 @@
 src: { stdenv, fetchFromGitHub, ... }:
 stdenv.mkDerivation rec {
+  pname = "AutoEq";
   inherit src;
   buildPhase = "";
   installPhase = ''
