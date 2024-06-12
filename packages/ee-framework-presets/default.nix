@@ -1,6 +1,6 @@
 src: { lib, stdenv, fetchFromGitHub, ... }:
 stdenv.mkDerivation rec {
-  pname = "ee-framework-presets";
+  name = "ee-framework-presets";
   inherit src;
   buildPhase = "";
   installPhase = ''
