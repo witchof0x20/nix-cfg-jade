@@ -1,4 +1,4 @@
-{ config, lib, pkgs, options, ... }:
+packages: { config, lib, pkgs, options, ... }:
 with lib;
 let
   cfg = config.jade.system;
@@ -54,6 +54,14 @@ in
     {
       # Let 'nixos-version --json' know about the Git revision of this flake.
       system.configurationRevision = cfg.rev;
+      # Overlay our custom packages
+      # Add in packages
+      nixpkgs.overlays = let system = config.nixpkgs.system; in [
+        (self: super: {
+          autoeq = pkgs.callPackage packages.${system}.autoeq { };
+          ee-framework-presets = pkgs.callPackage packages.${system}.ee-framework-presets { };
+        })
+      ];
       # Store our inputs
       _module.args.inputs = inputs;
       # Set up our nix preferences
