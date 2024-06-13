@@ -61,9 +61,3 @@ in
     home.packages = [ autoeq ee-framework-presets ];
   };
 }
-
-
-
-
-
-

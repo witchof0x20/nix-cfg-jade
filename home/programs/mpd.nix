@@ -2,6 +2,7 @@
 with lib;
 let
   cfg = config.jade.home.programs.mpd;
+  mpc_cli = pkgs.mpc_cli;
 in
 {
   options = {
@@ -35,9 +36,15 @@ in
       mpdMusicDir = null;
     };
     # TODO: gate this behind sway or wayland support
-    home.packages = [ pkgs.mpc_cli ];
-    wayland.windowManager.sway.config.keybindings = {
-      "XF86AudioPlay" = "exec ${pkgs.mpc_cli}/bin/mpc toggle";
-    };
+    home.packages = [ mpc_cli ];
+    wayland.windowManager.sway.config.keybindings =
+      let
+        mpc = "${mpc_cli}/bin/mpc";
+      in
+      {
+        "XF86AudioPlay" = "exec ${mpc} toggle";
+        "XF86AudioPrev" = "exec ${mpc} prev";
+        "XF86AudioNext" = "exec ${mpc} next";
+      };
   };
 }
