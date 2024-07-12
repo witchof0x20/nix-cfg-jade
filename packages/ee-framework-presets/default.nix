@@ -1,4 +1,4 @@
-src: { lib, stdenv, fetchFromGitHub, ... }:
+src: { lib, stdenv, ... }:
 stdenv.mkDerivation rec {
   name = "ee-framework-presets";
   inherit src;

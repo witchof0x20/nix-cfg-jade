@@ -1,4 +1,4 @@
-src: { stdenv, fetchFromGitHub, ... }:
+src: { stdenv, ... }:
 stdenv.mkDerivation rec {
   name = "AutoEq";
   inherit src;
