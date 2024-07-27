@@ -44,7 +44,7 @@ in
             "input-gain" = 0.0;
             "ir-width" = 100;
             "kernel-path" = "${config.xdg.configHome}/${irs_relative_path}";
-            "output-gain" = 0.0;
+            "output-gain" = -4.1;
           };
         };
       };
