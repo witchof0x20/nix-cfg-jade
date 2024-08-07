@@ -40,6 +40,7 @@
                   "alacritty"
                   "firefox"
                   "firefox-bin"
+                  "browser"
                   "kitty"
                   "slack"
                   "thunderbird"
