@@ -15,6 +15,6 @@ in
     };
   };
   config = mkIf cfg.enable {
-    home.packages = [ pkgs.firefox-wayland ];
+    home.packages = [ pkgs.firefox-beta ];
   };
 }
