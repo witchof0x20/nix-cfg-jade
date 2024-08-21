@@ -121,7 +121,7 @@
         # monitoring seems like a bad idea, with btrfs anyway
         enableRootSlice = false;
         enableSystemSlice = false;
-        enableUserServices = false;
+        enableUserSlices = false;
         # change if 4s is too fast
         extraConfig.DefaultMemoryPressureDurationSec = "4s";
       };
