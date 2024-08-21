@@ -13,12 +13,12 @@ in
     };
     autoComplete.enable = mkEnableOption "autocomplete";
     fixers = mkOption {
-      type = types.attrsOf (types.listOf types.string);
+      type = types.attrsOf (types.listOf types.str);
       description = "Fixers to use for ALE";
       default = { };
     };
     linters = mkOption {
-      type = types.attrsOf (types.listOf types.string);
+      type = types.attrsOf (types.listOf types.str);
       description = "Linters to use for ALE";
       default = { };
     };
