@@ -92,7 +92,6 @@ in
 
     # TODO: presumably some of these are suitable for other processors.
     hardware.opengl.extraPackages = mkIf cfg_phys.enable (with pkgs; optionals (cfg_phys.processor == "intel") [
-      intel-vaapi-driver
     ]);
   };
 }
