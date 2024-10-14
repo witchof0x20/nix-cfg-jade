@@ -52,6 +52,8 @@ in
             geo.enabled = false;
             # Adobe Flash
             plugin.state.flash = 0;
+            # Disable the sponsored thing
+            browser.newtabpage.directory.source = "";
           };
         };
       };
