@@ -61,8 +61,15 @@ in
           };
           # Required extensions
           extensions = with osConfig.nur.repos.rycee.firefox-addons; [
+            multi-account-containers
+            snowflake
+            sponsorblock
+            stylus
+            switchyomega
             ublock-origin
-            zotero
+            umatrix
+            violentmonkey
+            zotero-connector
           ];
         };
       };
