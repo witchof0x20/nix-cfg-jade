@@ -11,8 +11,6 @@
       url = "github:numtide/flake-utils";
       inputs.systems.follows = "systems";
     };
-    # NUR (for firefox presets)
-    nur.url = github:nix-community/NUR;
     # Autoeq preset for headphones
     autoeq = {
       url = github:jaakkopasanen/AutoEq;
@@ -29,7 +27,6 @@
     # This module is used for NixOS system config
     nixosModules.system = import ./system/module.nix {
       packages = self.packages;
-      nur = nur.nixosModules.nur;
     };
     # This module is used for home-manager config
     # Pass in our packages
