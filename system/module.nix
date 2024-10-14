@@ -1,10 +1,12 @@
-packages: { config, lib, pkgs, options, ... }:
+{ packages, nur }: { config, lib, pkgs, options, ... }:
 with lib;
 let
   cfg = config.jade.system;
 in
 {
   imports = [
+    # NUR
+    nur.nixosModules.nur
     # Unfree package config
     ./unfree.nix
     # Security config
