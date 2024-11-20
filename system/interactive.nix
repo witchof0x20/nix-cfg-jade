@@ -64,7 +64,7 @@ in
       keyMap = "us";
     };
     # Enable bash completion
-    programs.bash.enableCompletion = true;
+    programs.bash.completion.enable = true;
 
     # Packages I would like to have when working on the system
     environment.systemPackages = with pkgs; [

@@ -37,8 +37,8 @@ in
       #'';
     };
 
-    # Enable OpenGL
-    hardware.opengl = {
+    # Enable graphics acceleration
+    hardware.graphics = {
       enable = true;
     };
     # Color management service
@@ -91,7 +91,7 @@ in
     services.yubikey-agent.enable = true;
 
     # TODO: presumably some of these are suitable for other processors.
-    hardware.opengl.extraPackages = mkIf cfg_phys.enable (with pkgs; optionals (cfg_phys.processor == "intel") [
+    hardware.graphics.extraPackages = mkIf cfg_phys.enable (with pkgs; optionals (cfg_phys.processor == "intel") [
     ]);
   };
 }
