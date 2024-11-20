@@ -81,7 +81,7 @@ in
         # For fancy symbols
         font-awesome_5
         # For japanese
-        noto-fonts-cjk
+        noto-fonts-cjk-sans
       ];
     };
 
