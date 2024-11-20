@@ -67,7 +67,7 @@ in
       # Set up our nix preferences
       nix = {
         # Use flakes
-        package = pkgs.nixFlakes;
+        package = pkgs.nixVersions.stable;
         # Auto-gc
         gc = {
           automatic = true;
