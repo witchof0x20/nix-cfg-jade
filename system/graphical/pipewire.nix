@@ -8,8 +8,6 @@
       cfg_interactive = config.jade.system.interactive;
     in
     mkIf cfg.enable {
-      # Disable built in alsa
-      sound.enable = mkDefault false;
       # Replace with pipewire
       services.pipewire = {
         enable = true;
