@@ -60,7 +60,7 @@ in
             "extensions.autoDisableScopes" = 0;
           };
           # Required extensions
-          extensions = with osConfig.nur.repos.rycee.firefox-addons; [
+          extensions = with pkgs.nur.repos.rycee.firefox-addons; [
             multi-account-containers
             sponsorblock
             stylus
