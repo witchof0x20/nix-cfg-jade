@@ -33,7 +33,6 @@ in
           shiftwidth = tab_width;
         };
         extraConfig = ''
-          set clipboard=unnamedplus
           set softtabstop=${builtins.toString tab_width}
           set exrc
           set secure
