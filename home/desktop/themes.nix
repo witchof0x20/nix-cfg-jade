@@ -29,10 +29,10 @@ in
       #  package = pkgs.openzone-cursors;
       #  name = "Openzone Black";
       #};
-      theme = {
-        package = pkgs.sweet;
-        name = "Sweet-Dark";
-      };
+      #theme = {
+      #  package = pkgs.sweet;
+      #  name = "Sweet-Dark";
+      #};
     };
   };
 }
