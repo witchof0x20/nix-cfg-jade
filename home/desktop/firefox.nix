@@ -78,9 +78,10 @@ in
             ## resistFingerprinting disabled because fingerprintingProtection is better and more configurable
             "privacy.resistFingerprinting" = false;
             "privacy.resistFingerprinting.pbmode" = false;
-            ## Enable fingerprinting detection
+            ## Enable this fingerprinting protection mode
             "privacy.fingerprintingProtection" = true;
             "privacy.fingerprintingProtection.pbmode" = true;
+            ### https://searchfox.org/mozilla-central/source/toolkit/components/resistfingerprinting/RFPTargets.inc
             "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme, -JSDateTimeUTC";
           };
           # Required extensions
