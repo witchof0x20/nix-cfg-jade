@@ -82,7 +82,7 @@ in
             "privacy.fingerprintingProtection" = true;
             "privacy.fingerprintingProtection.pbmode" = true;
             ### https://searchfox.org/mozilla-central/source/toolkit/components/resistfingerprinting/RFPTargets.inc
-            "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme, -JSDateTimeUTC";
+            "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme,-JSDateTimeUTC";
           };
           # Required extensions
           extensions = with pkgs.nur.repos.rycee.firefox-addons; [
