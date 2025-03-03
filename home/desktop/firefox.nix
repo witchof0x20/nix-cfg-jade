@@ -74,6 +74,14 @@ in
             "toolkit.telemetry.unified" = false;
             "toolkit.telemetry.unifiedIsOptIn" = false;
             "toolkit.telemetry.updatePing.enabled" = false;
+            # Fingerprinting options
+            ## resistFingerprinting disabled because fingerprintingProtection is better and more configurable
+            "privacy.resistFingerprinting" = false;
+            "privacy.resistFingerprinting.pbmode" = false;
+            ## Enable fingerprinting detection
+            "privacy.fingerprintingProtection" = true;
+            "privacy.fingerprintingProtection.pbmode" = true;
+            "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme, -JSDateTimeUTC";
           };
           # Required extensions
           extensions = with pkgs.nur.repos.rycee.firefox-addons; [
