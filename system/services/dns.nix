@@ -95,6 +95,10 @@ in
           do-tcp = true;
           hide-identity = true;
           hide-version = true;
+          # TODO: consider caps-id
+          # Prefetching
+          prefetch = true;
+          prefetch_key = true;
         };
         forward-zone = [
           # Use cloudflare or google for upstream dns
