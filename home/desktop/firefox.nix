@@ -17,7 +17,7 @@ in
   config = mkIf cfg.enable {
     programs.firefox = {
       enable = true;
-      package = pkgs.firefox-beta;
+      package = pkgs.firefox-beta-bin;
       profiles = {
         "default" = {
           isDefault = true;
