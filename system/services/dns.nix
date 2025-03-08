@@ -50,13 +50,13 @@ let
             # Get IPv4 addresses if requested
             v4Entries =
               if useV4 && builtins.hasAttr "v4" config.resolvers
-              then map (ip: "${ip}:${toString port}#${domain}") config.resolvers.v4
+              then map (ip: "${ip}@${toString port}#${domain}") config.resolvers.v4
               else [ ];
 
             # Get IPv6 addresses if requested
             v6Entries =
               if useV6 && builtins.hasAttr "v6" config.resolvers
-              then map (ip: "${ip}:${toString port}#${domain}") config.resolvers.v6
+              then map (ip: "${ip}@${toString port}#${domain}") config.resolvers.v6
               else [ ];
           in
           v4Entries ++ v6Entries
