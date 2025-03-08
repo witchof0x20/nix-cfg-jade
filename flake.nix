@@ -4,6 +4,11 @@
   inputs = {
     # Okay fine i'll import nixpkgs
     nixpkgs.url = github:NixOS/nixpkgs/master;
+    # I'll also import nur (but downstream should override it too)
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # Simple systems import
     systems.url = "github:nix-systems/x86_64-linux";
     # Flake-utils for exporting packages

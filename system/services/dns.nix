@@ -98,7 +98,7 @@ in
           # TODO: consider caps-id
           # Prefetching
           prefetch = true;
-          prefetch_key = true;
+          prefetch-key = true;
         };
         forward-zone = [
           # Use cloudflare or google for upstream dns
