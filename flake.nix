@@ -2,9 +2,9 @@
   description = "Flake defining features I want on every system I use";
 
   inputs = {
-    # Okay fine i'll import nixpkgs
+    # It is highly recommended that you override this with your own nixpkgs. I don't update this repo often
     nixpkgs.url = github:NixOS/nixpkgs/master;
-    # I'll also import nur (but downstream should override it too)
+    # We use nur here, but you should override this, I don't update it often
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
