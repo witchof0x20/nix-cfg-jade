@@ -9,7 +9,7 @@ in
   options = {
     jade.system.security = mkOption {
       description = "Custom security options";
-      default = { };
+      default = { blacklist_me.enable = false; hardening.enable = false; };
       type = types.submodule {
         options = {
           blacklist_me = mkOption {
