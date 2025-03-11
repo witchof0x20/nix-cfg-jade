@@ -7,6 +7,7 @@ in
   options = {
     jade.system.services.tor-client = mkOption {
       description = "Tor client preferences";
+      default = { enable = false; };
       type = types.submodule {
         options = {
           enable = mkEnableOption "preconfigured Tor client";
