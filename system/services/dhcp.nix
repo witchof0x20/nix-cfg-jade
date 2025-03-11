@@ -7,6 +7,7 @@ in
   options = {
     jade.system.services.dhcp = mkOption {
       description = "Custom DHCP settings";
+      default = { };
       type = types.submodule {
         options = {
           trust = mkOption {
