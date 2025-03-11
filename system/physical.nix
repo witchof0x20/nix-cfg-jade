@@ -8,6 +8,7 @@ in
   options = {
     jade.system.physical = mkOption {
       description = "Configuration for physical (i.e. not a container) machines";
+      default = { };
       type = types.submodule {
         options = {
           # Whether the machine is physical
