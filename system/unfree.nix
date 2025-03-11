@@ -8,6 +8,7 @@ in
     # Unfree packages
     jade.system.unfree = mkOption {
       description = "Unfree package config";
+      default = { enable = false; };
       type = types.submodule {
         options = {
           # Whether to allow unfree packages

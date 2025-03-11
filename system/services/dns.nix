@@ -69,6 +69,7 @@ in
   options = {
     jade.system.services.dns = mkOption {
       description = "Custom DNS settings";
+      default = { enable = false; };
       type = types.submodule {
         options = {
           enable = mkEnableOption "Custom DNS";
