@@ -9,10 +9,11 @@ in
   options = {
     jade.system.security = mkOption {
       description = "Custom security options";
-      default = { blacklist_me.enable = false; hardening.enable = false; };
+      default = { };
       type = types.submodule {
         options = {
           blacklist_me = mkOption {
+            default = { };
             type = types.submodule {
               options = {
                 enable = mkEnableOption "whether to blacklist intel ME";
@@ -21,6 +22,7 @@ in
           };
           hardening = mkOption {
             description = "Hardening options";
+            default = { };
             type = types.submodule {
               options = {
                 enable = mkEnableOption "the NixOS hardening preset";
