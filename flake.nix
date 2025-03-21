@@ -21,11 +21,6 @@
       url = github:jaakkopasanen/AutoEq;
       flake = false;
     };
-    # Equalizer presets for framework laptops
-    ee-framework-presets = {
-      url = github:ceiphr/ee-framework-presets;
-      flake = false;
-    };
   };
 
   outputs = { self, nixpkgs, flake-utils, nur, autoeq, ee-framework-presets, ... }: {
@@ -43,7 +38,6 @@
       in
       {
         autoeq = pkgs.callPackage (import ./packages/autoeq/default.nix autoeq) { };
-        ee-framework-presets = pkgs.callPackage (import ./packages/ee-framework-presets/default.nix ee-framework-presets) { };
       };
   }));
 }
