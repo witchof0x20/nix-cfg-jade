@@ -59,7 +59,6 @@ in
       nixpkgs.overlays = let system = config.nixpkgs.system; in [
         (self: super: {
           autoeq = packages.${system}.autoeq;
-          ee-framework-presets = packages.${system}.ee-framework-presets;
         })
       ];
       # Store our inputs

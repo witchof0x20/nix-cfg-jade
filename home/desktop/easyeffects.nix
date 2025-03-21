@@ -52,6 +52,6 @@ in
       enable = true;
       source = "${autoeq}/share/autoeq/ath-m50x-velour-48000.wav";
     };
-    home.packages = [ autoeq ee-framework-presets ];
+    home.packages = [ autoeq ];
   };
 }
