@@ -23,7 +23,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, flake-utils, nur, autoeq, ee-framework-presets, ... }: {
+  outputs = { self, nixpkgs, flake-utils, nur, autoeq, ... }: {
     # This module is used for NixOS system config
     nixosModules.system = import ./system/module.nix {
       packages = self.packages;

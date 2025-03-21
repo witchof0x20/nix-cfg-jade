@@ -16,22 +16,6 @@
         "type": "github"
       }
     },
-    "ee-framework-presets": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1666496289,
-        "narHash": "sha256-z2WmozMDMUkiAd+BEc/5+DHgFXDbw3FdsvBwgIj0JmI=",
-        "owner": "ceiphr",
-        "repo": "ee-framework-presets",
-        "rev": "27885fe00c97da7c441358c7ece7846722fd12fa",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ceiphr",
-        "repo": "ee-framework-presets",
-        "type": "github"
-      }
-    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -75,11 +59,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1741402956,
-        "narHash": "sha256-y2hByvBM03s9T2fpeLjW6iprbxnhV9mJMmSwCHc41ZQ=",
+        "lastModified": 1742524664,
+        "narHash": "sha256-IZ6ntahn9ClwTMXsZvw1qg74tZWWKA1x7SCQRWePeEw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ed0b1881565c1ffef490c10d663d4f542031dad3",
+        "rev": "a08f47e16df33f6fe11c1231085071e5642a0a31",
         "type": "github"
       },
       "original": {
@@ -98,11 +82,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1741402176,
-        "narHash": "sha256-IQHh67nRA7hokhzA6yU4eCd/U8OHX9YyU3ybMBo7Vzc=",
+        "lastModified": 1742522008,
+        "narHash": "sha256-r2w9OZi6zN8gZ5kU9vgulMzUkFOmLpLILOLxPRlSW54=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "65dae65b9c1e6dde97314e917f5551abdf3d0097",
+        "rev": "a697290b531c9cc7e92829c2e0743c57ebb38fc1",
         "type": "github"
       },
       "original": {
@@ -114,7 +98,6 @@
     "root": {
       "inputs": {
         "autoeq": "autoeq",
-        "ee-framework-presets": "ee-framework-presets",
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs",
         "nur": "nur",
