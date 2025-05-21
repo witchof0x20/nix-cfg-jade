@@ -89,7 +89,7 @@ in
             multi-account-containers
             sponsorblock
             stylus
-            foxyproxy
+            foxyproxy-standard
             ublock-origin
             umatrix
             violentmonkey
