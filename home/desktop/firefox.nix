@@ -85,11 +85,11 @@ in
             "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme,-JSDateTimeUTC";
           };
           # Required extensions
-          extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
             multi-account-containers
             sponsorblock
             stylus
-            switchyomega
+            foxyproxy
             ublock-origin
             umatrix
             violentmonkey
