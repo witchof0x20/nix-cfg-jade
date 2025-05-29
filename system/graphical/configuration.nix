@@ -51,7 +51,7 @@ in
       glxinfo
       # Display drivers (TODO: still needed?)
       libGL
-      mesa.drivers
+      mesa
       # TODO: i forget why this is needed
       glib
     ];
