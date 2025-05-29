@@ -18,7 +18,7 @@ in
   config = mkIf cfg.enable {
     services.mako = {
       enable = true;
-      defaultTimeout = 5000;
+      settings.default-timeout = 5000;
     };
     wayland.windowManager.sway.extraConfig = ''
       exec ${pkgs.mako}/bin/mako
