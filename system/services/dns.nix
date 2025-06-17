@@ -87,6 +87,7 @@ in
       enableRootTrustAnchor = true;
       settings = {
         server = {
+          do-not-query-localhost = false;
           aggressive-nsec = true;
           cache-max-ttl = 14400;
           cache-min-ttl = 1200;
@@ -105,13 +106,35 @@ in
           {
             name = ".";
             forward-tls-upstream = true;
-            forward-addr = generateResolverList { names = [ "quad9_no_blocking" ]; };
-          }
-          {
-            name = ".";
-            forward-addr = generateResolverList { names = [ "quad9_no_blocking" ]; port = 53; };
+            forward-first = true;
+            forward-addr = (generateResolverList { names = [ "quad9_no_blocking" ]; }) ++ [
+              "127.0.0.1@5300"
+            ];
           }
         ];
+      };
+    };
+    services.dnscrypt-proxy2 = {
+      enable = true;
+      settings = {
+        listen_addresses = [ "127.0.0.1:5300" ];
+        # Alternatively, configure custom servers if needed
+        static = {
+          "quad9-10-4" = {
+            stamp = "sdns://AgcAAAAAAAAACDkuOS45LjEwAA9kbnMxMC5xdWFkOS5uZXQKL2Rucy1xdWVyeQ";
+          };
+          "quad9-10-4-alt" = {
+            stamp = "sdns://AgcAAAAAAAAADjE0OS4xMTIuMTEyLjEwAA9kbnMxMC5xdWFkOS5uZXQKL2Rucy1xdWVyeQ";
+          };
+          "quad9-10-6" = {
+            stamp = "sdns://AgcAAAAAAAAACzI2MjA6ZmU6OjEwAA9kbnMxMC5xdWFkOS5uZXQKL2Rucy1xdWVyeQ";
+          };
+          "quad9-10-6-alt" = {
+            stamp = "sdns://AgcAAAAAAAAADjI2MjA6ZmU6OmZlOjEwAA9kbnMxMC5xdWFkOS5uZXQKL2Rucy1xdWVyeQ";
+          };
+        };
+        require_dnssec = true;
+        ipv6_servers = true;
       };
     };
   };
