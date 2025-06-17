@@ -128,11 +128,8 @@ in
           # Quad9 (no blocking)  
           {
             name = ".";
-            forward-tls-upstream = true;
-            forward-first = true;
-            forward-addr = (generateResolverList { names = [ "quad9_no_blocking" ]; }) ++ [
-              "127.0.0.1@5300"
-            ];
+            #forward-addr = (generateResolverList { names = [ "quad9_no_blocking" ]; });
+            forward-addr = [ "127.0.0.1@5300" ];
           }
         ];
       };
@@ -140,9 +137,9 @@ in
     services.dnscrypt-proxy2 = {
       enable = true;
       settings = {
-        listen_addresses = [ "127.0.0.1:5300" ];
+        listen_addresses = [ "127.0.0.1:5300" "[::1]:5300" ];
         ipv6_servers = true;
-        server_names = [ "quad9-doh-ip4-port443-nofilter-pri" "quad9-doh-ip6-port443-nofilter-pri"];
+        server_names = [ "quad9-doh-ip4-port443-nofilter-pri" "quad9-doh-ip6-port443-nofilter-pri" ];
       };
     };
   };
