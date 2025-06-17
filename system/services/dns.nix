@@ -101,11 +101,16 @@ in
           prefetch-key = true;
         };
         forward-zone = [
-          # Use cloudflare or google for upstream dns
+          # Quad9 (no blocking)  
           {
             name = ".";
             forward-tls-upstream = true;
             forward-addr = generateResolverList { names = [ "quad9_no_blocking" ]; };
+          }
+          {
+            name = ".";
+            forward-upstream = true;
+            forward-addr = generateResolverList { names = [ "quad9_no_blocking" ]; port = 53; };
           }
         ];
       };
