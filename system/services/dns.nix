@@ -64,6 +64,29 @@ let
           [ ];
     in
     builtins.concatLists (map processResolver names);
+  toBase64URL = text:
+    let
+      inherit (lib) sublist mod stringToCharacters concatMapStrings;
+      inherit (lib.strings) charToInt;
+      inherit (builtins) substring foldl' genList elemAt length concatStringsSep stringLength;
+      lookup = stringToCharacters "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+      sliceN = size: list: n: sublist (n * size) size list;
+      pows = [ (64 * 64 * 64) (64 * 64) 64 1 ];
+      intSextets = i: map (j: mod (i / j) 64) pows;
+      compose = f: g: x: f (g x);
+      intToChar = elemAt lookup;
+      convertTripletInt = sliceInt: concatMapStrings intToChar (intSextets sliceInt);
+      sliceToInt = foldl' (acc: val: acc * 256 + val) 0;
+      convertTriplet = compose convertTripletInt sliceToInt;
+      join = concatStringsSep "";
+      len = stringLength text;
+      nFullSlices = len / 3;
+      bytes = map charToInt (stringToCharacters text);
+      tripletAt = sliceN 3 bytes;
+      head = genList (compose convertTriplet tripletAt) nFullSlices;
+      tail = tripletAt nFullSlices;
+    in
+    join (head ++ [ tail ]);
 in
 {
   options = {
@@ -118,23 +141,8 @@ in
       enable = true;
       settings = {
         listen_addresses = [ "127.0.0.1:5300" ];
-        # Alternatively, configure custom servers if needed
-        static = {
-          "quad9-10-4" = {
-            stamp = "sdns://AgcAAAAAAAAACDkuOS45LjEwAA9kbnMxMC5xdWFkOS5uZXQKL2Rucy1xdWVyeQ";
-          };
-          "quad9-10-4-alt" = {
-            stamp = "sdns://AgcAAAAAAAAADjE0OS4xMTIuMTEyLjEwAA9kbnMxMC5xdWFkOS5uZXQKL2Rucy1xdWVyeQ";
-          };
-          "quad9-10-6" = {
-            stamp = "sdns://AgcAAAAAAAAACzI2MjA6ZmU6OjEwAA9kbnMxMC5xdWFkOS5uZXQKL2Rucy1xdWVyeQ";
-          };
-          "quad9-10-6-alt" = {
-            stamp = "sdns://AgcAAAAAAAAADjI2MjA6ZmU6OmZlOjEwAA9kbnMxMC5xdWFkOS5uZXQKL2Rucy1xdWVyeQ";
-          };
-        };
-        require_dnssec = true;
         ipv6_servers = true;
+        server_names = [ "quad9-doh-ip4-port443-nofilter-pri" "quad9-doh-ip6-port443-nofilter-pri"];
       };
     };
   };
