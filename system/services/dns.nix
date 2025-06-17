@@ -109,7 +109,6 @@ in
           }
           {
             name = ".";
-            forward-upstream = true;
             forward-addr = generateResolverList { names = [ "quad9_no_blocking" ]; port = 53; };
           }
         ];
