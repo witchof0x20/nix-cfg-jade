@@ -125,11 +125,10 @@ in
           prefetch-key = true;
         };
         forward-zone = [
-          # Quad9 (no blocking)  
           {
             name = ".";
-            #forward-addr = (generateResolverList { names = [ "quad9_no_blocking" ]; });
-            forward-addr = [ "127.0.0.1@5300" ];
+            # Quad9 (no blocking)  
+            forward-addr = (generateResolverList { names = [ "quad9_no_blocking" ]; });
           }
         ];
       };
