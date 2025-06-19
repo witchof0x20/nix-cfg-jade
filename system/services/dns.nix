@@ -105,7 +105,7 @@ in
           {
             name = ".";
             # Quad9 (no blocking)  
-            tls-upstream = true;
+            forward-tls-upstream = true;
             forward-addr = (generateResolverList { names = [ "quad9_no_blocking" ]; });
           }
         ];
