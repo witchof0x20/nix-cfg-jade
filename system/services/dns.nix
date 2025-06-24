@@ -1,6 +1,8 @@
 { config, lib, options, pkgs, ... }:
 with lib;
 let
+  unbound_addr = "127.0.0.1";
+  dnscrypt_addr = "127.0.0.72";
   cfg = config.jade.system.services.dns;
   dnsResolvers = {
     quad9 = {
@@ -77,6 +79,8 @@ in
     };
   };
   config = mkIf cfg.enable {
+    # Resolvers
+    systemd.resolved.fallbackDns = [ unbound_addr dnscrypt_addr ];
     # Local DNS server
     services.unbound = {
       enable = true;
@@ -114,7 +118,7 @@ in
     services.dnscrypt-proxy2 = {
       enable = true;
       settings = {
-        listen_addresses = [ "127.0.0.1:5300" "[::1]:5300" ];
+        listen_addresses = [ "${dnscrypt_addr}:53" ];
         ipv6_servers = true;
         server_names = [ "quad9-doh-ip4-port443-nofilter-pri" "quad9-doh-ip6-port443-nofilter-pri" ];
       };
