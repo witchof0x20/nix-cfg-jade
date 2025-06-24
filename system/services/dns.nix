@@ -80,7 +80,7 @@ in
   };
   config = mkIf cfg.enable {
     # Resolvers
-    systemd.resolved.fallbackDns = [ unbound_addr dnscrypt_addr ];
+    services.resolved.fallbackDns = [ unbound_addr dnscrypt_addr ];
     # Local DNS server
     services.unbound = {
       enable = true;
