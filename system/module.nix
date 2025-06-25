@@ -63,6 +63,7 @@ in
       ];
       # Store our inputs
       _module.args.inputs = inputs;
+      services.userborn.enable = true;
       # Set up our nix preferences
       nix = {
         # Use flakes

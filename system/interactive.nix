@@ -47,11 +47,13 @@ in
     users.users."${cfg.user.name}" = {
       description = cfg.user.description;
       isNormalUser = true;
+      group = cfg.user.name;
       extraGroups = [ "wheel" ];
       # TODO: consider making this an option or using null
       uid = 1000;
       hashedPasswordFile = cfg.user.passwordFile;
     };
+    users.groups.${cfg.user.name} = { };
     # Internationalisation properties.
     i18n = {
       defaultLocale = "en_US.UTF-8";
