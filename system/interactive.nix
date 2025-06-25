@@ -33,7 +33,8 @@ in
               default = "Jade Harley";
             };
             passwordFile = mkOption {
-              type = types.str;
+              type = types.nullOr types.str;
+              default = null;
               description = "Password file";
             };
           };
