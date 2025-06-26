@@ -98,9 +98,7 @@ in
     services.unbound = {
       enable = true;
       #resolveLocalQueries = true;
-      package = pkgs.unbound-full.override {
-        withRedis = false;
-      };
+      package = pkgs.unbound-full;
       enableRootTrustAnchor = true;
       settings = {
         server = {
