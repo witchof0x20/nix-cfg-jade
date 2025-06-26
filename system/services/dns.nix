@@ -86,6 +86,13 @@ in
       extraConfig = ''
         DNS=${unbound_addr} ${dnscrypt_addr}
       '';
+      fallbackDns = [
+        # Default to no-censorship quad9
+        "9.9.9.10#dns10.quad9.net"
+        "149.112.112.10#dns10.quad9.net"
+        "2620:fe::10#dns10.quad9.net"
+        "2620:fe::fe:10#dns10.quad9.net"
+      ];
     };
     # Local DNS server
     services.unbound = {

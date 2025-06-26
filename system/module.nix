@@ -17,8 +17,6 @@ in
     # Graphical machine config
     ./graphical/configuration.nix
     # Services
-    ##  DHCP options
-    ./services/dhcp.nix
     ##  DNS options
     ./services/dns.nix
     ##  SSH options
