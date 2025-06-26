@@ -82,6 +82,7 @@ in
     # Set up resolved to use our resolvers by default
     services.resolved = {
       enable = true;
+      dnsovertls = "opportunistic";
       extraConfig = ''
         DNS=${unbound_addr} ${dnscrypt_addr}
       '';
