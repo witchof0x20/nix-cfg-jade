@@ -79,12 +79,17 @@ in
     };
   };
   config = mkIf cfg.enable {
-    # Resolvers
-    services.resolved.fallbackDns = [ unbound_addr dnscrypt_addr ];
+    # Set up resolved to use our resolvers by default
+    systemd.resolved = {
+      enable = true;
+      extraConfig = ''
+        DNS=${unbound_addr} ${dnscrypt_addr}
+      '';
+    };
     # Local DNS server
     services.unbound = {
       enable = true;
-      resolveLocalQueries = true;
+      #resolveLocalQueries = true;
       package = pkgs.unbound-full.override {
         withRedis = false;
       };
