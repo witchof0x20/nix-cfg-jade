@@ -11,6 +11,14 @@
     };
     # Simple systems import
     systems.url = "github:nix-systems/x86_64-linux";
+    # yeah fuck it, lets use lix why not
+    lix-nixos-module = {
+      url = "https://git.lix.systems/lix-project/lix.git";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
+    };
     # Flake-utils for exporting packages
     flake-utils = {
       url = "github:numtide/flake-utils";
@@ -23,10 +31,11 @@
     };
   };
 
-  outputs = { self, nixpkgs, flake-utils, nur, autoeq, ... }: {
+  outputs = { self, nixpkgs, flake-utils, lix-nixos-module, nur, autoeq, ... }: {
     # This module is used for NixOS system config
     nixosModules.system = import ./system/module.nix {
       packages = self.packages;
+      lix-nixos-module = lix-nixos-module;
     };
     # This module is used for home-manager config
     # Pass in our packages

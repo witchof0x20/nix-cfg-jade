@@ -1,10 +1,11 @@
-{ packages }: { config, lib, pkgs, options, ... }:
+{ packages, lix-nixos-module }: { config, lib, pkgs, options, ... }:
 with lib;
 let
   cfg = config.jade.system;
 in
 {
   imports = [
+    lix-nixos-module.nixosModules.default
     # Unfree package config
     ./unfree.nix
     # Security config
@@ -66,8 +67,6 @@ in
       services.userborn.enable = true;
       # Set up our nix preferences
       nix = {
-        # Use flakes
-        package = pkgs.nixVersions.stable;
         # Auto-gc
         gc = {
           automatic = true;
