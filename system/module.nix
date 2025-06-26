@@ -5,7 +5,7 @@ let
 in
 {
   imports = [
-    lix-nixos-module.nixosModules.default
+    #lix-nixos-module.nixosModules.default
     # Unfree package config
     ./unfree.nix
     # Security config
@@ -65,6 +65,7 @@ in
       services.userborn.enable = true;
       # Set up our nix preferences
       nix = {
+        package = pkgs.lix;
         # Auto-gc
         gc = {
           automatic = true;
