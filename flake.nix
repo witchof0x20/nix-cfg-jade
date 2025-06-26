@@ -13,7 +13,7 @@
     systems.url = "github:nix-systems/x86_64-linux";
     # yeah fuck it, lets use lix why not
     lix-nixos-module = {
-      url = "git+https://git.lix.systems/lix-project/lix.git?ref=release-2.91";
+      url = "git+https://git.lix.systems/lix-project/nixos-module.git?ref=release-2.91";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";
