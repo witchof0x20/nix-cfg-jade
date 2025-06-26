@@ -80,7 +80,7 @@ in
   };
   config = mkIf cfg.enable {
     # Set up resolved to use our resolvers by default
-    systemd.resolved = {
+    services.resolved = {
       enable = true;
       extraConfig = ''
         DNS=${unbound_addr} ${dnscrypt_addr}
