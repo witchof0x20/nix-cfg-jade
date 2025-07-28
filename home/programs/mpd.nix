@@ -12,6 +12,7 @@ in
         type = types.str;
         description = "MPD host with samba share and main mpd instance";
       };
+      enableNcmpcpp = mkEnableOption "ncmpcpp";
     };
   };
   config = mkIf cfg.enable {
@@ -32,7 +33,7 @@ in
       '';
     };
     programs.ncmpcpp = {
-      enable = true;
+      enable = cfg.enableNcmpcpp;
       mpdMusicDir = null;
     };
     # TODO: gate this behind sway or wayland support
