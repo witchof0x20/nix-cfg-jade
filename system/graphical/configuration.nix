@@ -79,7 +79,7 @@ in
         liberation_ttf_v2
         corefonts
         # For fancy symbols
-        font-awesome_5
+        font-awesome
         # For japanese
         noto-fonts-cjk-sans
       ];
