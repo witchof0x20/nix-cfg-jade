@@ -37,7 +37,7 @@ in
         opengl-pbo = "yes";
         #display-fps = "60.012001";
 
-        profile = "opengl-hq";
+        profile = "gpu-hq";
         interpolation = "yes";
         deband = "no";
         #scale = "ewa_lanczossharp";
@@ -47,8 +47,8 @@ in
 
         #demuxer-mkv-subtitle-preroll = "yes # good?";
         blend-subtitles = "yes";
-        sub-ass-vsfilter-aspect-compat = "no";
-        sub-ass-force-style = "Kerning=yes";
+        sub-ass-use-video-data = "all";
+        sub-ass-style-overrides = "Kerning=yes";
         sub-gauss = "0.6";
 
         sub-font = "Noto Sans";
