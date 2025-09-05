@@ -3,14 +3,12 @@
 
   inputs = {
     # It is highly recommended that you override this with your own nixpkgs. I don't update this repo often
-    nixpkgs.url = github:NixOS/nixpkgs/master;
+    nixpkgs.url = "github:NixOS/nixpkgs/master";
     # We use nur here, but you should override this, I don't update it often
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Simple systems import
-    systems.url = "github:nix-systems/x86_64-linux";
     # yeah fuck it, lets use lix why not
     lix-nixos-module = {
       url = "git+https://git.lix.systems/lix-project/nixos-module.git?ref=release-2.91";
@@ -22,11 +20,10 @@
     # Flake-utils for exporting packages
     flake-utils = {
       url = "github:numtide/flake-utils";
-      inputs.systems.follows = "systems";
     };
     # Autoeq preset for headphones
     autoeq = {
-      url = github:jaakkopasanen/AutoEq;
+      url = "github:jaakkopasanen/AutoEq";
       flake = false;
     };
   };
