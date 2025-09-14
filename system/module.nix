@@ -1,11 +1,10 @@
-{ packages, lix-nixos-module }: { config, lib, pkgs, options, ... }:
+{ packages }: { config, lib, pkgs, options, ... }:
 with lib;
 let
   cfg = config.jade.system;
 in
 {
   imports = [
-    #lix-nixos-module.nixosModules.default
     # Unfree package config
     ./unfree.nix
     # Security config
