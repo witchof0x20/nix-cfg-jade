@@ -1,4 +1,4 @@
-{ config, lib, options, osConfig, pkgs, ... }:
+{ packages }: { config, lib, options, osConfig, pkgs, ... }:
 with lib;
 let
   cfg = config.jade.home;
@@ -40,6 +40,11 @@ in
     };
   };
   config = mkIf cfg.enable {
+    nixpkgs.overlays = [
+      (final: prev: {
+        firefox-beta-bin = packages.${pkgs.system}.firefox;
+      })
+    ];
     # Shell config
     programs.bash = {
       enable = true;

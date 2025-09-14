@@ -18,16 +18,22 @@
       url = "github:jaakkopasanen/AutoEq";
       flake = false;
     };
+    firefox = {
+      url = "github:nix-community/flake-firefox-nightly";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, flake-utils, nur, autoeq, ... }: {
+  outputs = { self, nixpkgs, nur, flake-utils, autoeq, firefox, ... }: {
     # This module is used for NixOS system config
     nixosModules.system = import ./system/module.nix {
       packages = self.packages;
     };
     # This module is used for home-manager config
     # Pass in our packages
-    homeModules.default = import ./home/module.nix;
+    homeModules.default = import ./home/module.nix {
+      packages = self.packages;
+    };
   } // (flake-utils.lib.eachDefaultSystem (system: rec {
     packages =
       let
@@ -35,6 +41,7 @@
       in
       {
         autoeq = pkgs.callPackage (import ./packages/autoeq/default.nix autoeq) { };
+        firefox = firefox.packages.${system}.firefox-beta-bin;
       };
   }));
 }
