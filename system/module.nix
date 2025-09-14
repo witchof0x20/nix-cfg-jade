@@ -64,7 +64,7 @@ in
       services.userborn.enable = true;
       # Set up our nix preferences
       nix = {
-        package = pkgs.lix;
+        package = pkgs.lixPackageSets.git.lix;
         # Auto-gc
         gc = {
           automatic = true;
