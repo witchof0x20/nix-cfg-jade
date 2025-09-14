@@ -93,7 +93,7 @@ in
           # Trust root and wheel
           trusted-users = pkgs.lib.mkAfter [ "root" "@wheel" ];
           # Enable flakes and commands
-          experimental-features = [ "nix-command" "flakes" "auto-allocate-uids" ];
+          experimental-features = [ "nix-command" "flakes" ];
           # Auto allocate UIDs
           auto-allocate-uids = true;
         };
