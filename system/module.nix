@@ -95,7 +95,7 @@ in
           # Enable flakes and commands
           experimental-features = [ "nix-command" "flakes" ];
           # Auto allocate UIDs
-          auto-allocate-uids = true;
+          # auto-allocate-uids = true;
         };
       };
       # Clean up /tmp on boot
