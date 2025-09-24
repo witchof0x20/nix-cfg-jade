@@ -37,6 +37,7 @@ in
         name = "Orchis-Dark";
       };
       # TODO: Font is already set elsewhere, should be preserved but check anyway
+      gtk2.enable = true;
       gtk3 = {
         enable = true;
         extraConfig = {
