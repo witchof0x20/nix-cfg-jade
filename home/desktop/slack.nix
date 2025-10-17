@@ -20,24 +20,6 @@ in
       slack = pkgs.slack;
     in
     mkIf cfg.enable {
-      # TODO assert that system wide chromium sandbox is avaiable
-      systemd.user.services.slack = {
-        Unit = {
-          Description = "Desktop client for Slack";
-          After = [ "graphical-session-pre.target" ];
-          PartOf = [ "graphical-session.target" ];
-        };
-        Service = {
-          Environment = [
-            "PATH=${config.home.profileDirectory}/bin"
-            "NIXOS_OZONE_WL=1"
-          ];
-          ExecStart = "${cfg.package}/bin/slack -u -s";
-        };
-        Install = {
-          WantedBy = [ "graphical-session.target" ];
-        };
-      };
       home.packages = [
         cfg.package
       ];
