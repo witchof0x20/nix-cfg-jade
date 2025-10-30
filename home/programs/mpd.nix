@@ -2,7 +2,7 @@
 with lib;
 let
   cfg = config.jade.home.programs.mpd;
-  mpc_cli = pkgs.mpc_cli;
+  mpc_cli = pkgs.mpc;
 in
 {
   options = {
