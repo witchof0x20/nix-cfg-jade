@@ -48,7 +48,7 @@ in
     # Installed packages needed for desktop testing and use
     environment.systemPackages = with pkgs; [
       # Display utils
-      glxinfo
+      mesa-demos
       # Display drivers (TODO: still needed?)
       libGL
       mesa
