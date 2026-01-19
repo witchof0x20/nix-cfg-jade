@@ -83,9 +83,9 @@ in
     services.resolved = {
       enable = true;
       dnsovertls = "opportunistic";
-      extraConfig = ''
-        DNS=${unbound_addr} ${dnscrypt_addr}
-      '';
+      settings.Resolve = {
+        DNS = [ unbound_addr dnscrypt_addr ];
+      };
       fallbackDns = [
         # Default to no-censorship quad9
         "9.9.9.10#dns10.quad9.net"
