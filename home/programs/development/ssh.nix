@@ -7,16 +7,19 @@ in
   config = mkIf cfg.enable {
     programs.ssh = {
       enable = true;
-      # Best practices security settings
-      hashKnownHosts = true;
-      extraOptionOverrides = {
-        IdentitiesOnly = "yes";
-        ForwardAgent = "no";
-      };
+      enableDefaultConfig = false;
       # Control sockets
       #controlMaster = "auto";
       #controlPath = "${ssh}/control/master-%r@%n:%p";
       #controlPersist = "5m";
+      matchBlocks."*" = {
+        # Best practices security settings
+        hashKnownHosts = true;
+        extraOptions = {
+          IdentitiesOnly = "yes";
+          ForwardAgent = "no";
+        };
+      };
     };
   };
 }

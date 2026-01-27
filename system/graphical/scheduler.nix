@@ -123,7 +123,7 @@
         enableSystemSlice = false;
         enableUserSlices = false;
         # change if 4s is too fast
-        extraConfig.DefaultMemoryPressureDurationSec = "4s";
+        settings.OOM.DefaultMemoryPressureDurationSec = "4s";
       };
       # kill off stuff if absolutely needed, limit to things killing which
       # is unlikely to gimp system/desktop irreversibly, go only by PSI.

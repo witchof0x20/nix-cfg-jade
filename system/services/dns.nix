@@ -82,17 +82,17 @@ in
     # Set up resolved to use our resolvers by default
     services.resolved = {
       enable = true;
-      dnsovertls = "opportunistic";
       settings.Resolve = {
         DNS = [ unbound_addr dnscrypt_addr ];
+        DNSOverTLS = "opportunistic";
+        FallbackDNS = [
+          # Default to no-censorship quad9
+          "9.9.9.10#dns10.quad9.net"
+          "149.112.112.10#dns10.quad9.net"
+          "2620:fe::10#dns10.quad9.net"
+          "2620:fe::fe:10#dns10.quad9.net"
+        ];
       };
-      fallbackDns = [
-        # Default to no-censorship quad9
-        "9.9.9.10#dns10.quad9.net"
-        "149.112.112.10#dns10.quad9.net"
-        "2620:fe::10#dns10.quad9.net"
-        "2620:fe::fe:10#dns10.quad9.net"
-      ];
     };
     # Local DNS server
     services.unbound = {

@@ -26,17 +26,11 @@ in
     # Enable X11 (just enough to run wayland and a backup xterm session just in case)
     services.xserver = {
       enable = true;
-      # Use gdm 
-      displayManager.gdm = {
-        enable = mkDefault true;
-        wayland = mkDefault true;
-      };
       # Fix screen tearing under x11
       #deviceSection = ''
       #  Option "TearFree" "true"
       #'';
     };
-
     # Enable graphics acceleration
     hardware.graphics = {
       enable = true;

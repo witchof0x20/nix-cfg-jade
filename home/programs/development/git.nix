@@ -28,15 +28,19 @@ in
     # Git config
     programs.git = {
       enable = true;
-      userEmail = cfg.user.email;
-      userName = cfg.user.name;
       signing = {
         signByDefault = true;
         key = cfg.user.signingKey;
       };
       lfs.enable = true;
       ignores = [ "*~" "*.swp" ];
-      extraConfig.init.defaultBranch = "main";
+      settings = {
+        user = {
+          email = cfg.user.email;
+          name = cfg.user.name;
+        };
+        init.defaultBranch = "main";
+      };
     };
   };
 }
