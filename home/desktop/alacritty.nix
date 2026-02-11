@@ -26,6 +26,13 @@ in
           };
           size = 8.0;
         };
+        keyboard.bindings = [
+          {
+            key = "Return";
+            mods = "Shift";
+            chars = "\\x1b\\r";
+          }
+        ];
         colors = {
           # Default colors
           primary = {
