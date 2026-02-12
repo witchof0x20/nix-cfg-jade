@@ -30,7 +30,7 @@ in
           {
             key = "Return";
             mods = "Shift";
-            chars = "\\x1b\\r";
+            chars = "\\u001B\\r";
           }
         ];
         colors = {
