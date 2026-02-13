@@ -22,7 +22,7 @@ in
 
     # DESKTOP SETUP
     ./desktop/easyeffects.nix
-    ./desktop/mako.nix
+    ./desktop/swaync.nix
     ./desktop/themes.nix
     ./desktop/xresources.nix
 
