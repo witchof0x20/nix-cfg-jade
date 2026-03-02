@@ -57,6 +57,15 @@ in
       nixpkgs.overlays = let system = config.nixpkgs.system; in [
         (self: super: {
           autoeq = packages.${system}.autoeq;
+          font-awesome = super.font-awesome.overrideAttrs (old: rec {
+            version = "7.2.0";
+            src = super.fetchFromGitHub {
+              owner = "FortAwesome";
+              repo = "Font-Awesome";
+              rev = version;
+              hash = "sha256-BTm78NCZXksCuzoXm2B39/UIB/Sb/wwL1vvaGRVUaio=";
+            };
+          });
         })
       ];
       # Store our inputs

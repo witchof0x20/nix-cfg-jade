@@ -59,7 +59,7 @@ in
         enable = true;
         defaultFonts = {
           monospace = [ "Fira Code" ];
-          emoji = [ "Font Awesome 6 Free" "Font Awesome 6 Brands" ];
+          emoji = [ "Font Awesome 7 Free" "Font Awesome 7 Brands" ];
           sansSerif = [ "DejaVu Sans" ];
           serif = [ "DejaVu Serif" ];
         };
