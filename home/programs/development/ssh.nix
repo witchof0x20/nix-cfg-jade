@@ -12,13 +12,11 @@ in
       #controlMaster = "auto";
       #controlPath = "${ssh}/control/master-%r@%n:%p";
       #controlPersist = "5m";
-      matchBlocks."*" = {
+      settings."*" = {
         # Best practices security settings
-        hashKnownHosts = true;
-        extraOptions = {
-          IdentitiesOnly = "yes";
-          ForwardAgent = "no";
-        };
+        HashKnownHosts = true;
+        IdentitiesOnly = "yes";
+        ForwardAgent = "no";
       };
     };
   };
