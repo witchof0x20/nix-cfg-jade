@@ -42,6 +42,8 @@ in
         };
       };
       gtk4 = {
+        # Keep theming GTK4 like GTK3 (the pre-26.05 default).
+        theme = config.gtk.theme;
         extraConfig = {
           gtk-application-prefer-dark-theme = true;
         };

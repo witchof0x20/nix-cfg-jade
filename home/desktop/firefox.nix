@@ -18,6 +18,9 @@ in
     programs.firefox = {
       enable = true;
       package = pkgs.firefox-beta-bin;
+      # Keep the pre-26.05 profile location: hosts persist ~/.mozilla, so
+      # following the new XDG default would strand the existing profile.
+      configPath = lib.mkDefault ".mozilla/firefox";
       profiles = {
         "default" = {
           isDefault = true;
